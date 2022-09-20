@@ -9,6 +9,7 @@ function ResourceTable({
     return (
         <>
             {/* <button onClick={() => dispatch(getResourcePrice())} >btn </button> */}
+            {/* sone stnrewo;vn;eroinvoerinv';orienv' */}
             <table>
                 <tbody>
                     <tr>
