@@ -1,0 +1,57 @@
+.header {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 70px;
+    border-bottom: 2px solid #EEEEF0;
+
+    .logo_text {
+        width: 300px;
+        text-transform: uppercase;
+    }
+
+    h3:hover{
+        color: #696969;
+        transition: 0.2s;
+    }
+
+    ul {
+        display: flex;
+        height: 100%;
+
+        li{
+            width: 200px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-size: 20px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #FF5C00;
+                transition: 0.2s;
+            }
+        }
+    }
+    .auth_container {
+        width: 300px;
+        display: flex;
+        justify-content:space-evenly;
+    }
+    .auth{
+        cursor: pointer;
+        font-size: 15px;
+        &:hover {
+            color: rgba(0,0,0,0.5);
+        }
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 15px;
+    }
+}

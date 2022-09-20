@@ -1,0 +1,82 @@
+
+$tier4_color: #8bd4ff;
+$tier5_color: #fc6d60;
+$tier6_color: #f59f5e;
+$tier7_color: #fcdb71;
+$tier8_color: #dbdbdb;
+$updateButton_color: #ffa26d;
+$darken_percent: 10%;
+$clickedDarken_percent: 30%;
+
+.updateButton {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: $updateButton_color;
+}
+
+.tierButton {
+    margin-right: 10px;
+    width: 76px;
+    height: 24px;
+    font-size: 16px;
+    border: 1px solid darken($updateButton_color, $darken_percent);
+    box-shadow: 0px 4px gray;
+}
+
+
+.tier4{
+    background-color: $tier4_color;
+    border: 1px solid darken($tier4_color, $darken_percent);
+    &:hover, &:active {
+        background-color: darken($tier4_color, $clickedDarken_percent);
+    }
+}
+.tier5{
+    background-color: $tier5_color;
+    border: 1px solid darken($tier5_color, $darken_percent);
+    &:hover, &:active {
+        background-color: darken($tier5_color, $clickedDarken_percent);
+    }
+}
+.tier6{
+    background-color: $tier6_color;
+    border: 1px solid darken($tier6_color, $darken_percent);
+    &:hover, &:active {
+        background-color: darken($tier6_color, $clickedDarken_percent);
+    }
+}
+.tier7{
+    background-color: $tier7_color;
+    border: 1px solid darken($tier7_color, $darken_percent);
+    &:hover, &:active {
+        background-color: darken($tier7_color, $clickedDarken_percent);
+    }
+}
+.tier8{
+    background-color: $tier8_color;
+    border: 1px solid darken($tier8_color, $darken_percent);
+    &:hover, &:active {
+        background-color: darken($tier8_color, $clickedDarken_percent);
+    }
+}
+.create {
+    margin: 0 auto;
+    width: 300px;
+    font-size: 16px;
+}
+.update{
+    width: 250px;
+    height: 60px;
+    background-color: #ffa26d;
+}
+
+.active {
+    filter: brightness(65%);
+    transform: translateY(4px);
+    border: 1px solid rgb(145, 145, 145);
+    box-shadow: none;
+
+}

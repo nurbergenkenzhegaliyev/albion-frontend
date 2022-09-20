@@ -1,0 +1,19 @@
+.dropdown {
+    position: relative;
+    .drop {
+        top: 90px;
+        position: absolute;
+        background-color: rgb(193, 193, 193);
+        height: 90px;
+        display: flex;
+        flex-direction: row;
+
+        img {
+            width: 90px;
+            height: 90px;
+            &:hover {
+                background-color: rgb(255, 255, 255);
+            }
+        }
+    }
+}
