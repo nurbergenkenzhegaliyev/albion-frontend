@@ -7,20 +7,18 @@ import { logout } from '../../features/auth/userSlice';
 
 function Header() {
     
-    const { userInfo, userToken } = useSelector((state) => state.user);
+    // Get userInfo from state to check if user logged in
+    // Otherwise some option will not be allowed
+    const { userInfo } = useSelector((state) => state.user);
     const dispatch = useDispatch();
-    let loggedIn = false;
-    if(userToken) { loggedIn = !loggedIn }
-    // useEffect(() => {
-    //     if (userToken) {
-            // dispatch(getUsers())
-    //     }
-    // }, [userToken, dispatch]);
 
     const navigate = useNavigate();
 
+    // Logout function
     const handleLogout = () => {
+        // Call logout() funciton
         dispatch(logout());
+        // Navigate to home('/')
         navigate('/')
     }
 
@@ -33,7 +31,7 @@ function Header() {
             </Link>
 
             <ul>
-                <Link to={ loggedIn ? "/craft" : "#"} >
+                <Link to={ userInfo ? "/craft" : "#"} >
                     <li>
                         Craft
                     </li>

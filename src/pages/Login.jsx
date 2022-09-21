@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { userLogin, getResourcePrice } from '../features/auth/authActions';
+import { userLogin } from '../features/auth/authActions';
+import { getResourcePrice } from '../features/info/infoActions';
 
 
 function Login() {

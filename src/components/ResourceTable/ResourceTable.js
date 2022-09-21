@@ -5,11 +5,8 @@ import TableInput from '../TableInput/TableInput';
 function ResourceTable({
     tier
 }) {
-    const {resources} = useSelector((state) => state.user);
     return (
         <>
-            {/* <button onClick={() => dispatch(getResourcePrice())} >btn </button> */}
-            {/* sone stnrewo;vn;eroinvoerinv';orienv' */}
             <table>
                 <tbody>
                     <tr>
