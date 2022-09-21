@@ -77,9 +77,8 @@ const userSlice = createSlice({
         [changeResourcePrice.pending]: (state) => {
             state.isLoading = true
         },
-        [changeResourcePrice.fulfilled]: (state, {payload}) => {
+        [changeResourcePrice.fulfilled]: (state) => {
             state.isLoading = false
-            state[payload.name] = payload.price;
         },
         [changeResourcePrice.rejected]: (state, {payload}) => {
             state.isLoading = false

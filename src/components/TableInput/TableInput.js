@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, { useEffect, useLayoutEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { changeResourcePrice } from '../../features/auth/authActions';
 import styles from './TableInput.module.scss';
@@ -10,17 +9,11 @@ function TableInput({
 }) {
     const dispatch = useDispatch();
 
-    function delay(time) {
-        return new Promise(resolve => setTimeout(resolve, time));
-    }
-    console.log(uniqueName)
     const [price, setPrice] = React.useState(useSelector((state) => state.user.resources[uniqueName]));
     
     function updateResPriceLocal(name, price) {
         const prices = JSON.parse(localStorage.getItem('resources'));
-        console.log('PRCIES: ',prices)
         prices[name] = price;
-        console.log('PRCIES: ',prices)
         localStorage.setItem('resources', JSON.stringify(prices));
 
     }
@@ -28,7 +21,7 @@ function TableInput({
     useEffect(()=> {
             dispatch(changeResourcePrice({name: uniqueName, price}))
             updateResPriceLocal(uniqueName, price)
-    },[price])
+    },[price, dispatch, uniqueName])
     
 
     return (
@@ -36,5 +29,5 @@ function TableInput({
     )
 }
 
-export default TableInput
+export default TableInput;
 

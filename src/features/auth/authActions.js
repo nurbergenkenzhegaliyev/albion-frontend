@@ -105,11 +105,7 @@ export const changeResourcePrice = createAsyncThunk(
                     authorization: `Bearer ${user.userToken}`
                 }
             }
-            console.log("id: ", user.userInfo.id);
-            console.log("name: ", name);
-            console.log("price: ", price);
             const {data} = await axios.post('/auth/update', { id: user.userInfo.id, name, price }, config);
-            console.log(data)
             return data;
 
         } catch (error) {
