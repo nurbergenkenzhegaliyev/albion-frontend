@@ -2,11 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getResourcePrice, changeResourcePrice } from "../info/infoActions.js";
 
 const resources = localStorage.getItem('resources') ? JSON.parse(localStorage.getItem('resources')) : null;
+const craftingItems = localStorage.getItem('craftingItems') ? JSON.parse(localStorage.getItem('craftingItems')) : [];
 
 const initialState = {
     loading: false,
     error: false,
-    craftingItems: [],
+    craftingItems,
     resources
 }
 
@@ -36,8 +37,6 @@ const infoSlice = createSlice({
             state.loading = false
             state.error = payload
         },
-
-
 
         [changeResourcePrice.pending]: (state) => {
             state.loading = true
