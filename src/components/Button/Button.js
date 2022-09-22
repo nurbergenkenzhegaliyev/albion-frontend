@@ -4,26 +4,36 @@ import AppContext from "../../context.js";
 
 function Button(props) {
 
-    const {clickedTier, setClickedTier} = React.useContext(AppContext);
+    const {clickedTier, setClickedTier, itemName} = React.useContext(AppContext);
 
-    if(props.id.includes("tier4")){
+    if(props.tier === "4"){
         console.log(clickedTier)
-        return (<div onClick={() => setClickedTier(props.id)} className={`${styles.updateButton} ${styles.tier4} ${styles.tierButton} ${(clickedTier.includes(props.id) ? styles.active:'')}`}>Tier {props.id[4]}</div>)
+        return (<div onClick={() => setClickedTier(props.tier)} className={`${styles.updateButton} ${styles.tier4} ${styles.tierButton} ${(clickedTier.includes(props.tier) ? styles.active:'')}`}>Tier {props.tier}</div>)
     }
-    else if(props.id.includes("tier5")){
-        return (<div onClick={() => setClickedTier(props.id)} className={`${styles.updateButton} ${styles.tier5} ${styles.tierButton} ${(clickedTier.includes(props.id) ? styles.active:'')}`}>Tier {props.id[4]}</div>)
+    else if(props.tier === "5"){
+        return (<div onClick={() => setClickedTier(props.tier)} className={`${styles.updateButton} ${styles.tier5} ${styles.tierButton} ${(clickedTier.includes(props.tier) ? styles.active:'')}`}>Tier {props.tier}</div>)
     }
-    else if(props.id.includes("tier6")){
-        return (<div onClick={() => setClickedTier(props.id)} className={`${styles.updateButton} ${styles.tier6} ${styles.tierButton} ${(clickedTier.includes(props.id) ? styles.active:'')}`}>Tier {props.id[4]}</div>)
+    else if(props.tier === "6"){
+        return (<div onClick={() => setClickedTier(props.tier)} className={`${styles.updateButton} ${styles.tier6} ${styles.tierButton} ${(clickedTier.includes(props.tier) ? styles.active:'')}`}>Tier {props.tier}</div>)
     }
-    else if(props.id.includes("tier7")){
-        return (<div onClick={() => setClickedTier(props.id)} className={`${styles.updateButton} ${styles.tier7} ${styles.tierButton} ${(clickedTier.includes(props.id) ? styles.active:'')}`}>Tier {props.id[4]}</div>)
+    else if(props.tier === "7"){
+        return (<div onClick={() => setClickedTier(props.tier)} className={`${styles.updateButton} ${styles.tier7} ${styles.tierButton} ${(clickedTier.includes(props.tier) ? styles.active:'')}`}>Tier {props.tier}</div>)
     }
-    else if(props.id.includes("tier8")){
-        return (<div onClick={() => setClickedTier(props.id)} className={`${styles.updateButton} ${styles.tier8} ${styles.tierButton} ${(clickedTier.includes(props.id) ? styles.active:'')}`}>Tier {props.id[4]}</div>)
+    else if(props.tier === "8"){
+        return (<div onClick={() => setClickedTier(props.tier)} className={`${styles.updateButton} ${styles.tier8} ${styles.tierButton} ${(clickedTier.includes(props.tier) ? styles.active:'')}`}>Tier {props.tier}</div>)
     }
     else if(props.id.includes("create")){
-        return (<div className={`${styles.updateButton} ${styles.create}`}>Create card</div>)
+        function on() {
+            if(clickedTier) {
+                const itemName = "T" + clickedTier + "_" + itemName.name;
+                console.log(itemName);
+            }
+            else {
+                return console.log("Tier is not selected");
+            }
+        };
+        
+        return (<div className={`${styles.updateButton} ${styles.create}`} onClick={()=>on()}>Create card</div>)
     }
     else if(props.id.includes("update")){
         return (<div onClick={() => props.openModal(true)} className={`${styles.updateButton} ${styles.update}`} >Update resource prices</div>)

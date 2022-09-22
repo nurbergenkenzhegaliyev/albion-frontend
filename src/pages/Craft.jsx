@@ -743,11 +743,11 @@ function Craft() {
 
                 <div className='tierButtons'>
                     <div className='d-flex'>
-                        <Button id="tier4" />
-                        <Button id="tier5" />
-                        <Button id="tier6" />
-                        <Button id="tier7" />
-                        <Button id="tier8" />
+                        <Button tier="4" />
+                        <Button tier="5" />
+                        <Button tier="6" />
+                        <Button tier="7" />
+                        <Button tier="8" />
                     </div>
                     <Button id="create"/>
                 </div>
