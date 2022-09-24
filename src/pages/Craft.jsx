@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../components/Button/Button.js'
 import Dropdown from '../components/Dropdown/Dropdown.js';
 import Modal from '../components/Modal/Modal.js';
+import CraftTable from '../components/CraftTable/CraftTable.js';
 
 const makers = [
     {
@@ -725,8 +726,7 @@ const items = {
     
 };
 
-
-
+const testArray = ["T4_MAIN_SPEAR_KEEPER","T4_SHOES_LEATHER_MORGANA","T4_SHOES_LEATHER_HELL"];
 
 function Craft() {
     const [modalActive, setModalActive] = React.useState(false)
@@ -754,9 +754,11 @@ function Craft() {
                 <Button openModal={setModalActive} id="update"/>
                 <Modal active={modalActive} setActive={setModalActive} />
             </div>
-            {/* <div style={{backgroundColor: "blue", height:"400px"}}></div>
-            <div style={{backgroundColor: "red", height:"400px"}}></div>
-            <div style={{backgroundColor: "green", height:"400px"}}></div> */}
+            {
+                testArray.map((name, index) => (
+                    <CraftTable key={index} uniquename={name} />
+                ))
+            }
         </div>
     )
 }

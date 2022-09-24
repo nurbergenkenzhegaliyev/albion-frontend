@@ -25,8 +25,8 @@ function Button(props) {
     else if(props.id.includes("create")){
         function on() {
             if(clickedTier) {
-                const itemName = "T" + clickedTier + "_" + itemName.name;
-                console.log(itemName);
+                const item = "T" + clickedTier + "_" + itemName.name;
+                console.log(item);
             }
             else {
                 return console.log("Tier is not selected");
