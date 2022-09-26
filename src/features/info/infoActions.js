@@ -62,7 +62,7 @@ export const getCraftingItems = createAsyncThunk(
                 }
             }
             const {data} = await axios.post('/info/getCraftingItems', {id: user.userInfo.id}, config);
-            localStorage.setItem('craftinItems', JSON.stringify(data));
+            localStorage.setItem('craftingItems', JSON.stringify(data));
             return data;
 
         } catch (error) {
@@ -76,3 +76,76 @@ export const getCraftingItems = createAsyncThunk(
         }
     }
 )
+
+export const addCraftingItem = createAsyncThunk(
+    'info/addCraftingItem',
+    async(item, { getState, rejectWithValue } ) => {
+        try {
+            console.log(item);
+
+            const { user } = getState();
+            const config = {
+                headers: {
+                    authorization: `Bearer ${user.userToken}`
+                }
+            }
+            const {data} = await axios.post('/info/addCraftingItem', {id: user.userInfo.id, craftingItem: item}, config);
+            localStorage.setItem('craftingItems', JSON.stringify(data));
+            return data;
+
+        } catch (error) {
+            // return custom error message from API if any
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+            
+        }
+    }
+)
+
+export const removeCraftingItem = createAsyncThunk(
+    'info/removeCraftingItem',
+    async(item, { getState, rejectWithValue } ) => {
+        try {
+            console.log(item);
+
+            const { user } = getState();
+            const config = {
+                headers: {
+                    authorization: `Bearer ${user.userToken}`
+                }
+            }
+            const {data} = await axios.post('/info/removeCraftingItem', {id: user.userInfo.id, craftingItem: item}, config);
+            localStorage.setItem('craftingItems', JSON.stringify(data));
+            return data;
+
+        } catch (error) {
+            // return custom error message from API if any
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+            
+        }
+    }
+)
+
+// export const getItemInfo = createAsyncThunk(
+//     'info/getItemInfo',
+//     async(uniquename,{rejectWithValue}) => {
+//         try {
+//             const data = await axios.post('/info/getItemInfo', {uniquename});
+//             return data;
+//         } catch (error) {
+//             // return custom error message from API if any
+//             if (error.response && error.response.data.message) {
+//                 return rejectWithValue(error.response.data.message)
+//             } else {
+//                 return rejectWithValue(error.message)
+//             }
+//         }
+//     } 
+// )

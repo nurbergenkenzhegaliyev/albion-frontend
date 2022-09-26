@@ -16,12 +16,8 @@ function Login() {
     const navigate = useNavigate();
     
     useEffect(() => {
-        if(!localStorage.getItem('resources')) {
-            dispatch(getResourcePrice());
-        }
-        if(!localStorage.getItem('craftingItems')) {
-            dispatch(getCraftingItems());
-        }
+        dispatch(getResourcePrice());
+        dispatch(getCraftingItems());
 
         if(userInfo) navigate('/')
     }, [navigate, userInfo, dispatch]);

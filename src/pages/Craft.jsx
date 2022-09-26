@@ -3,6 +3,7 @@ import Button from '../components/Button/Button.js'
 import Dropdown from '../components/Dropdown/Dropdown.js';
 import Modal from '../components/Modal/Modal.js';
 import CraftTable from '../components/CraftTable/CraftTable.js';
+import { useSelector } from 'react-redux';
 
 const makers = [
     {
@@ -728,9 +729,11 @@ const items = {
 
 const testArray = ["T4_MAIN_SPEAR_KEEPER","T4_SHOES_LEATHER_MORGANA","T4_SHOES_LEATHER_HELL"];
 
+
+
 function Craft() {
     const [modalActive, setModalActive] = React.useState(false)
-
+    const { craftingItems } = useSelector((state)=> state.info);
 
     return(
         <div className='craft'>
@@ -751,11 +754,12 @@ function Craft() {
                     </div>
                     <Button id="create"/>
                 </div>
+                    {/* <Button id="delete" craftingItems={craftingItems} /> */}
                 <Button openModal={setModalActive} id="update"/>
                 <Modal active={modalActive} setActive={setModalActive} />
             </div>
             {
-                testArray.map((name, index) => (
+                craftingItems.map((name, index) => (
                     <CraftTable key={index} uniquename={name} />
                 ))
             }
