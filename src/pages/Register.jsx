@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 function Register() {
 
-    const { isLoading, userInfo, error, success } = useSelector((state) => state.user)
+    const { isLoading, userInfo, error } = useSelector((state) => state.user)
 
     const dispatch = useDispatch();
 
@@ -15,10 +15,8 @@ function Register() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(success) navigate('/login')
-
         if(userInfo) navigate('/')
-    }, [navigate, userInfo, success]);
+    }, [navigate, userInfo]);
 
     const submitForm = (data) => {
         dispatch(registerUser(data));

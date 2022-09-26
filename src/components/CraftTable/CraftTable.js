@@ -12,33 +12,33 @@ function CraftTable({
             <table className={styles.first_table}>
                 <thead>
                     <tr>
-                        <th colSpan={100} > Test</th>
+                        <th colSpan={100} >NAME OF ITEM</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th> Amount</th>
-                        <th> Брусья</th>
-                        <th> Слиток</th>
-                        <th> Ткань</th>
-                        <th> Кожа</th>
-                        <th> Артефакт111111</th>
+                        <th>Amount</th>
+                        <th>Брусья</th>
+                        <th>Слиток</th>
+                        <th>Ткань</th>
+                        <th>Кожа</th>
+                        <th>Артефакт111111</th>
                     </tr>
                     <tr>
-                        <td> Test</td>
-                        <td> Test</td>
-                        <td> Test</td>
-                        <td> Test</td>
-                        <td> Test</td>
-                        <td> Test</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
                     </tr>
                     <tr>
-                        <td> Test</td>
-                        <td> Test</td>
-                        <td> Test</td>
-                        <td> Test</td>
-                        <td> Test</td>
-                        <td> Test</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
                     </tr>
                 </tbody>
             </table>
@@ -55,23 +55,23 @@ function CraftTable({
                     <tbody>
                         <tr>
                             <td>{tier}.0</td>
-                            <td>Test</td>
-                            <td>Test</td>
+                            <td>0</td>
+                            <td>0</td>
                         </tr>
                         <tr>
                             <td>{tier}.1</td>
-                            <td>Test</td>
-                            <td>Test</td>
+                            <td>0</td>
+                            <td>0</td>
                         </tr>
                         <tr>
                             <td>{tier}.2</td>
-                            <td>Test</td>
-                            <td>Test</td>
+                            <td>0</td>
+                            <td>0</td>
                         </tr>
                         <tr>
                             <td>{tier}.3</td>
-                            <td>Test</td>
-                            <td>Test</td>
+                            <td>0</td>
+                            <td>0</td>
                         </tr>
                     </tbody>
                 </table>
@@ -88,32 +88,32 @@ function CraftTable({
                     </thead>
                     <tbody>
                         <tr>
-                            <td> Test</td>
-                            <td> Test</td>
-                            <td> Test</td>
-                            <td> Test</td>
-                            <td> Test</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
                         </tr>
                         <tr>
-                            <td> Test</td>
-                            <td> Test</td>
-                            <td> Test</td>
-                            <td> Test</td>
-                            <td> Test</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
                         </tr>
                         <tr>
-                            <td> Test</td>
-                            <td> Test</td>
-                            <td> Test</td>
-                            <td> Test</td>
-                            <td> Test</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
                         </tr>
                         <tr>
-                            <td> Test</td>
-                            <td> Test</td>
-                            <td> Test</td>
-                            <td> Test</td>
-                            <td> Test</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
                         </tr>
                     </tbody>
                 </table>

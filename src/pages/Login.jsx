@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { userLogin } from '../features/auth/authActions';
-import { getResourcePrice } from '../features/info/infoActions';
+import { getCraftingItems, getResourcePrice } from '../features/info/infoActions';
 
 
 function Login() {
@@ -19,8 +19,12 @@ function Login() {
         if(!localStorage.getItem('resources')) {
             dispatch(getResourcePrice());
         }
+        if(!localStorage.getItem('craftingItems')) {
+            dispatch(getCraftingItems());
+        }
+
         if(userInfo) navigate('/')
-    }, [navigate, userInfo]);
+    }, [navigate, userInfo, dispatch]);
 
     const submitForm =  (data) => {
         dispatch(userLogin(data));

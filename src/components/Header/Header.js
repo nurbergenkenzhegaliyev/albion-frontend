@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { logout } from '../../features/auth/userSlice';
+import { logout } from '../../features/auth/userSlice.js';
+import {deleteInfo} from '../../features/info/infoSlice.js'
 
 function Header() {
     
@@ -16,6 +17,7 @@ function Header() {
 
     // Logout function
     const handleLogout = () => {
+        dispatch(deleteInfo());
         // Call logout() funciton
         dispatch(logout());
         // Navigate to home('/')

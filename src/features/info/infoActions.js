@@ -50,3 +50,29 @@ export const changeResourcePrice = createAsyncThunk(
         }
     }
 )
+
+export const getCraftingItems = createAsyncThunk(
+    'info/getCraftingItems',
+    async(arg, { getState, rejectWithValue } ) => {
+        try {
+            const { user } = getState();
+            const config = {
+                headers: {
+                    authorization: `Bearer ${user.userToken}`
+                }
+            }
+            const {data} = await axios.post('/info/getCraftingItems', {id: user.userInfo.id}, config);
+            localStorage.setItem('craftinItems', JSON.stringify(data));
+            return data;
+
+        } catch (error) {
+            // return custom error message from API if any
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+            
+        }
+    }
+)
