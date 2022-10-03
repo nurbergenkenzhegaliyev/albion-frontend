@@ -2,8 +2,15 @@ import React from "react";
 import styles from "./CraftTable.module.scss";
 import { useState } from "react";
 import SecondTable from "./SecondTable";
+import ThirdTable from "./ThirdTable";
 
 function CraftTable({ item }) {
+  const returnBonus = 0.15;
+  const [costTier0, setCostTier0] = useState(0);
+  const [costTier1, setCostTier1] = useState(0);
+  const [costTier2, setCostTier2] = useState(0);
+  const [costTier3, setCostTier3] = useState(0);
+
   // console.log("item", item);
 
   const uniquename = item["@uniquename"];
@@ -42,20 +49,20 @@ function CraftTable({ item }) {
                     <tr>
                       <th>Amount</th>
                       {obj.craftresource.map((resource) => (
-                        <th>{resource["@uniquename"]}</th>
+                        <th key={resource["@uniquename"]+'1'}>{resource["@uniquename"]}</th>
                       ))}
                     </tr>
                     <tr>
                       <td>1</td>
                       {obj.craftresource.map((resource) => (
-                        <td>{resource["@count"]}</td>
+                        <td key={resource["@uniquename"]+'2'}>{resource["@count"]}</td>
                       ))}
                     </tr>
                     <tr>
                       {/* input */}
                       <td>0</td>
                       {obj.craftresource.map((resource) => (
-                        <td>{resource["@count"]}</td>
+                        <td key={resource["@uniquename"]+'3'}>{resource["@count"]}</td>
                       ))}
                     </tr>
                   </tbody>
@@ -66,49 +73,34 @@ function CraftTable({ item }) {
         </div>
 
         <div className={styles.calculations}>
-          <SecondTable tier={tier} craftingMethods={craftingMethods} option={option} />
+          {/* Need to change this trash <---------------------------------*/}
+          <SecondTable
+            key={tier + 100}
+            tier={tier}
+            craftingMethods={craftingMethods}
+            option={option}
+            costTier0={costTier0}
+            costTier1={costTier1}
+            costTier2={costTier2}
+            costTier3={costTier3}
+            setCostTier0={setCostTier0}
+            setCostTier1={setCostTier1}
+            setCostTier2={setCostTier2}
+            setCostTier3={setCostTier3}
+            returnBonus={returnBonus}
+          />
+          {/* Need to change this trash <---------------------------------*/}
 
-          <table className={styles.third_table}>
-            <thead>
-              <tr>
-                <th>Expense</th>
-                <th>Imcome</th>
-                <th>Net</th>
-                <th>%</th>
-                <th>Jour.</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-            </tbody>
-          </table>
+          <ThirdTable 
+            key={tier + 200}
+            craftingMethods={craftingMethods}
+            option={option}
+            costTier0={costTier0}
+            costTier1={costTier1}
+            costTier2={costTier2}
+            costTier3={costTier3}
+            returnBonus={returnBonus}
+          />
         </div>
       </div>
 

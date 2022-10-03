@@ -1,42 +1,63 @@
 import React from "react";
 import styles from "./CraftTable.module.scss";
 import { useSelector } from "react-redux";
-import TableInput from "../TableInput/TableInput";
-import { useState } from "react";
 
-function SecondTable({ tier, craftingMethods, option }) {
-  const returnBonus = 0.15;
+function SecondTable({
+  tier,
+  craftingMethods,
+  option,
+  costTier0,
+  costTier1,
+  costTier2,
+  costTier3,
+  setCostTier0,
+  setCostTier1,
+  setCostTier2,
+  setCostTier3,
+  returnBonus
+}) {
   const { resources } = useSelector((state) => state.info);
-
-  const [tier0, setTier0] = useState(0);
-  const [tier1, setTier1] = useState(0);
-  const [tier2, setTier2] = useState(0);
-  const [tier3, setTier3] = useState(0);
 
   // Function calculates the cost for every enchant
   // Net cost
   // 1. Return bonus
   // 2. Journals (For now it will not be included)
-
   const calculation = (enchantment) => {
+    // Initialize sum
     let sum = 0;
+    // Get array of obj with material info depending on option
     const materials = craftingMethods[option].craftresource;
+    // Loop through every material in the array
     for (const prop in materials) {
+      // Get unique name
       const uniquename = materials[prop]["@uniquename"];
+      // Get amount
       const count = materials[prop]["@count"];
+      // Initialize cost
       let cost = 0;
-
+      // Check if material is artefact (they do not have enchantment level)
       if (!uniquename.includes("ARTEFACT")) {
+        // If no enchantment
         if (enchantment === 0) {
           cost = resources[uniquename];
         } else {
-          cost = resources[uniquename + "_LEVEL" + enchantment + "@" + enchantment];
+          // Else change name and get cost from (redux) state
+          cost =
+            resources[uniquename + "_LEVEL" + enchantment + "@" + enchantment];
         }
       } else {
+        // Get cost if it is arftefact
         cost = resources[uniquename];
       }
-      sum = (!uniquename.includes("ARTEFACT")) ? sum += count * cost * (1 - returnBonus) : sum += count * cost
+      // Add total cost of material to the sum
+      sum = !uniquename.includes("ARTEFACT")
+        ? //Here is used returBonus. Need to change. ALso add journals.--------->
+          (sum += count * cost * (1 - returnBonus))
+        : (sum += count * cost);
     }
+    // Add item craft cost-------------->
+
+    // Return total cost of craft
     return sum;
   };
 
@@ -56,8 +77,8 @@ function SecondTable({ tier, craftingMethods, option }) {
           <td>
             <input
               type="text"
-              value={tier0}
-              onChange={(e) => setTier0(e.target.value)}
+              value={costTier0}
+              onChange={(e) => setCostTier0(e.target.value)}
             />
           </td>
         </tr>
@@ -67,8 +88,8 @@ function SecondTable({ tier, craftingMethods, option }) {
           <td>
             <input
               type="text"
-              value={tier1}calculation
-              onChange={(e) => setTier1(e.target.value)}
+              value={costTier1}
+              onChange={(e) => setCostTier1(e.target.value)}
             />
           </td>
         </tr>
@@ -78,8 +99,8 @@ function SecondTable({ tier, craftingMethods, option }) {
           <td>
             <input
               type="text"
-              value={tier2}
-              onChange={(e) => setTier2(e.target.value)}
+              value={costTier2}
+              onChange={(e) => setCostTier2(e.target.value)}
             />
           </td>
         </tr>
@@ -89,8 +110,8 @@ function SecondTable({ tier, craftingMethods, option }) {
           <td>
             <input
               type="text"
-              value={tier3}
-              onChange={(e) => setTier3(e.target.value)}
+              value={costTier3}
+              onChange={(e) => setCostTier3(e.target.value)}
             />
           </td>
         </tr>
