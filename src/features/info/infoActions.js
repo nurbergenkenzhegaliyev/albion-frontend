@@ -37,6 +37,7 @@ export const changeResourcePrice = createAsyncThunk(
                 }
             }
             const {data} = await axios.post('/auth/update', { id: user.userInfo.id, name, price }, config);
+            localStorage.setItem('resources', JSON.stringify(data));
             return data;
 
         } catch (error) {

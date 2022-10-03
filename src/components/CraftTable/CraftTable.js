@@ -1,77 +1,72 @@
 import React from "react";
 import styles from "./CraftTable.module.scss";
+import { useState } from "react";
+import SecondTable from "./SecondTable";
 
-function CraftTable({ uniquename }) {
+function CraftTable({ item }) {
+  // console.log("item", item);
+
+  const uniquename = item["@uniquename"];
+  // console.log("Item uniquename: ", uniquename);
+
   const tier = uniquename[1];
+  // console.log("Item tier: ", tier);
+
+  // Several way to craft the item
+  const craftingMethods = item.craftingrequirements;
+  // console.log("Item crafting methods: ", craftingMethods);
+
+  const [option, setOption] = useState("1");
+  // console.log("Option: ", option);
+
   return (
     <div className={styles.main}>
       <div className={styles.tables_section}>
-        <table className={styles.first_table}>
-          <thead>
-            <tr>
-              <th colSpan={100}>NAME OF ITEM</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Amount</th>
-              <th>Брусья</th>
-              <th>Слиток</th>
-              <th>Ткань</th>
-              <th>Кожа</th>
-              <th>Артефакт111111</th>
-            </tr>
-            <tr>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className={styles.first_table}>
+          <div className={styles.header}>
+            <span>{uniquename}</span>
+            <div className={styles.options}>
+              <button onClick={() => setOption("0")}>1</button>
+              <button onClick={() => setOption("1")}>2</button>
+            </div>
+          </div>
+
+          {
+            // Section to show multiple ways to craft an item
+            craftingMethods.map((obj, index) => (
+              <div key={index} className={styles.tableSlider}>
+                <table id={index}>
+                  <tbody
+                    className={index.toString() === option ? "" : styles.hide}
+                  >
+                    <tr>
+                      <th>Amount</th>
+                      {obj.craftresource.map((resource) => (
+                        <th>{resource["@uniquename"]}</th>
+                      ))}
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      {obj.craftresource.map((resource) => (
+                        <td>{resource["@count"]}</td>
+                      ))}
+                    </tr>
+                    <tr>
+                      {/* input */}
+                      <td>0</td>
+                      {obj.craftresource.map((resource) => (
+                        <td>{resource["@count"]}</td>
+                      ))}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ))
+          }
+        </div>
 
         <div className={styles.calculations}>
-          <table className={styles.second_table}>
-            <thead>
-              <tr>
-                <th>Tier</th>
-                <th>Cost</th>
-                <th>Sell price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{tier}.0</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>{tier}.1</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>{tier}.2</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>{tier}.3</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-            </tbody>
-          </table>
+          <SecondTable tier={tier} craftingMethods={craftingMethods} option={option} />
 
           <table className={styles.third_table}>
             <thead>

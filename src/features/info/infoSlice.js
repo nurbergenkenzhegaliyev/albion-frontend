@@ -9,7 +9,7 @@ import {
 
 const resources = localStorage.getItem("resources")
   ? JSON.parse(localStorage.getItem("resources"))
-  : null;
+  : [];
 const craftingItems = localStorage.getItem("craftingItems")
   ? JSON.parse(localStorage.getItem("craftingItems"))
   : [];
@@ -49,8 +49,9 @@ const infoSlice = createSlice({
     [changeResourcePrice.pending]: (state) => {
       state.loading = true;
     },
-    [changeResourcePrice.fulfilled]: (state) => {
+    [changeResourcePrice.fulfilled]: (state, { payload }) => {
       state.loading = false;
+      state.resources = payload;
     },
     [changeResourcePrice.rejected]: (state, { payload }) => {
       state.loading = false;

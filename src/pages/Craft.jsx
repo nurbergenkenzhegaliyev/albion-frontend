@@ -727,14 +727,10 @@ const items = {
     
 };
 
-const testArray = ["T4_MAIN_SPEAR_KEEPER","T4_SHOES_LEATHER_MORGANA","T4_SHOES_LEATHER_HELL"];
-
-
 
 function Craft() {
     const [modalActive, setModalActive] = React.useState(false)
     const { craftingItems } = useSelector((state)=> state.info);
-
     return(
         <div className='craft'>
             <div className='itemChoose'>
@@ -759,8 +755,8 @@ function Craft() {
                 <Modal active={modalActive} setActive={setModalActive} />
             </div>
             {
-                craftingItems.map((name, index) => (
-                    <CraftTable key={index} uniquename={name} />
+                craftingItems.map((obj, index) => (
+                    <CraftTable key={obj["@uniquename"]} item={obj} />
                 ))
             }
         </div>
