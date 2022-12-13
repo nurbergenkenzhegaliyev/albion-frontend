@@ -5,6 +5,7 @@ import {
   getCraftingItems,
   addCraftingItem,
   removeCraftingItem,
+  addCraftingItemSellPrice,
 } from "../info/infoActions.js";
 
 const resources = localStorage.getItem("resources")
@@ -13,12 +14,16 @@ const resources = localStorage.getItem("resources")
 const craftingItems = localStorage.getItem("craftingItems")
   ? JSON.parse(localStorage.getItem("craftingItems"))
   : [];
+const prices = localStorage.getItem("prices")
+  ? JSON.parse(localStorage.getItem("prices"))
+  : [];
 
 const initialState = {
   loading: false,
   error: false,
   craftingItems,
   resources,
+  prices,
 };
 
 const infoSlice = createSlice({
@@ -31,6 +36,7 @@ const infoSlice = createSlice({
       state.error = false;
       state.craftingItems = [];
       state.resources = [];
+      state.prices = [];
     },
   },
   extraReducers: {
@@ -63,7 +69,8 @@ const infoSlice = createSlice({
     },
     [getCraftingItems.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.craftingItems = payload;
+      state.craftingItems = payload.craftingItems;
+      state.prices = payload.prices;
     },
     [getCraftingItems.rejected]: (state, { payload }) => {
       state.loading = false;
@@ -75,7 +82,8 @@ const infoSlice = createSlice({
     },
     [addCraftingItem.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.craftingItems = payload;
+      state.craftingItems = payload.data;
+      state.prices = payload.dataPrices;
     },
     [addCraftingItem.rejected]: (state, { payload }) => {
       state.loading = false;
@@ -90,6 +98,18 @@ const infoSlice = createSlice({
       state.craftingItems = payload;
     },
     [removeCraftingItem.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    },
+
+    [addCraftingItemSellPrice.pending]: (state) => {
+      state.loading = true;
+    },
+    [addCraftingItemSellPrice.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.prices = payload;
+    },
+    [addCraftingItemSellPrice.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     },

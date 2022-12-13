@@ -1,0 +1,29 @@
+.hide {
+    display: none;
+}
+
+.first_table {
+    width: 660px;
+
+    table {
+        table-layout: fixed;
+        display: block;
+        background-color: white;
+        width: 100%;
+    }
+    
+    td, th {
+        max-width: 100px;
+        min-width: 100px;
+        text-align: center;
+        height: 24px;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+        
+        &:nth-child(4) {
+            width: 100%;
+        }
+    }
+}
+

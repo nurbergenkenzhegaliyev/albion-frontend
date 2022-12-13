@@ -1,116 +1,23 @@
 $tier4_color: #8bd4ff;
 
 .main {
+  width: 1440px;
+  margin: 0 auto;
+  background-color: #b2b2b258;
 
-    width: 1440px;
-    margin: 0 auto;
-    background-color: #b2b2b258;
+  .tables_section {
+    padding: 65px;
 
-    .tables_section {
-
-        padding: 65px;
-
-        table {
-            border-collapse: collapse;
-        }
-        .header {
-            background-color: $tier4_color;
-            height: 33px;
-            width: 100%;
-            padding-left: 30px;
-            padding-right: 30px;
-            text-transform: uppercase;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            
-            .options {
-                width: 100px;
-                display: flex;
-                justify-content: space-between;
-            }
-
-        }
-        
-        .first_table {
-            width: 660px;
-            
-            .tableSlider {
-                
-                .hide {
-                    display: none;
-                }
-
-                table {
-                    table-layout: fixed;
-                    display: block;
-                    background-color: white;
-                    width: 100%;
-                }
-                td, th {
-                    max-width: 100px;
-                    min-width: 100px;
-                    text-align: center;
-                    height: 24px;
-                    white-space: nowrap;
-                    overflow: hidden !important;
-                    text-overflow: ellipsis;
-                    
-                    &:last-child {
-                        width: 100%;
-                    }
-                }
-            }
-        }
-        
-        .calculations {
-            margin-top: 30px;
-            width: 650px;
-            display: flex;
-            justify-content: space-between;
-
-            table {
-                table-layout: fixed;
-            }
-
-            td, th {
-                text-align: center;
-                height: 24px;
-                background-color: white;
-                width: 100px;
-            }
-
-            .second_table {
-                width: 250px;
-                margin-right: 10px;
-
-
-                tr th:first-child,
-                tr td:first-child {
-                    width: 50px;
-                }
-            }
-
-            .third_table {
-                width: 100%;
-                
-                tr th:nth-child(n+4),
-                tr td:nth-child(n+4) {
-                    width: 50px;
-                }
-            }
-
-        }
+    table {
+      border-collapse: collapse;
     }
-
+  }
 }
 
-
 input {
-    background-color: lighten($tier4_color, 15%);
-    border: none;
-    width: 100%;
-    text-align: center;
-    font-size: inherit;
+  background-color: lighten($tier4_color, 15%);
+  border: none;
+  width: 100%;
+  text-align: center;
+  font-size: inherit;
 }

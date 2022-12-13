@@ -8,34 +8,35 @@ export const registerUser = createAsyncThunk(
     // callback function
     async ({ username, password }, { rejectWithValue }) => {
         try {
-            // configure header's Content-Type as JSON
+
             const config = {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             }
-            // make request to backend
+
             await axios.post(
                 '/auth/registration',
                 { username, password },
                 config
             )
+            
         } catch (error) {
-            // return custom error message from API if any
+
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)
             } else {
                 return rejectWithValue(error.message)
             }
+
         }
         
     }
 )
     
 export const userLogin  = createAsyncThunk(
-    // action type string
     'user/login',
-    // callback function
+    
     async ({ username, password }, { rejectWithValue }) => {
         try {
             // configure header's Content-Type as JSON

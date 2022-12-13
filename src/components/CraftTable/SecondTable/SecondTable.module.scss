@@ -1,0 +1,28 @@
+.calculations {
+    margin-top: 30px;
+    width: 650px;
+    display: flex;
+    justify-content: space-between;
+
+    table {
+        table-layout: fixed;
+    }
+
+    td, th {
+        text-align: center;
+        height: 24px;
+        background-color: white;
+        width: 100px;
+    }
+
+    .second_table {
+        width: 250px;
+        margin-right: 10px;
+
+
+        tr th:first-child,
+        tr td:first-child {
+            width: 50px;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Dropdown.module.scss";
-import AppContext from "../../context.js";
+import {AppContext} from "../../context.js";
 
 const moveDrop = (arr) => {
   return (-arr.length / 2) * 90 + 45;

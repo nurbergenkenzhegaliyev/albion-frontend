@@ -1,10 +1,11 @@
 import React from "react";
-import TableInput from "../TableInput/TableInput";
+import TableInput from "../TableInput/TableInput.js";
+import styles from "./ResourceTable.module.scss"
 
 function ResourceTable({ tier }) {
   return (
     <>
-      <table>
+      <table className={styles.resourceTable}>
         <tbody>
           <tr>
             <th>Tier {tier}</th>
@@ -12,66 +13,39 @@ function ResourceTable({ tier }) {
             <th>.1</th>
             <th>.2</th>
             <th>.3</th>
+            <th>.4</th>
           </tr>
           <tr>
             <td>Plank</td>
-            <td>
-              <TableInput uniqueName={`T${tier}_PLANKS`} />
-            </td>
-            <td>
-              <TableInput uniqueName={`T${tier}_PLANKS_LEVEL1@1`} />
-            </td>
-            <td>
-              <TableInput uniqueName={`T${tier}_PLANKS_LEVEL2@2`} />
-            </td>
-            <td>
-              <TableInput uniqueName={`T${tier}_PLANKS_LEVEL3@3`} />
-            </td>
+            <TableInput uniqueName={`T${tier}_PLANKS`} />
+            <TableInput uniqueName={`T${tier}_PLANKS_LEVEL1@1`} />
+            <TableInput uniqueName={`T${tier}_PLANKS_LEVEL2@2`} />
+            <TableInput uniqueName={`T${tier}_PLANKS_LEVEL3@3`} />
+            <TableInput uniqueName={`T${tier}_PLANKS_LEVEL4@4`} />
           </tr>
           <tr>
             <td>Metal</td>
-            <td>
-              <TableInput uniqueName={`T${tier}_METALBAR`} />
-            </td>
-            <td>
-              <TableInput uniqueName={`T${tier}_METALBAR_LEVEL1@1`} />
-            </td>
-            <td>
-              <TableInput uniqueName={`T${tier}_METALBAR_LEVEL2@2`} />
-            </td>
-            <td>
-              <TableInput uniqueName={`T${tier}_METALBAR_LEVEL3@3`} />
-            </td>
+            <TableInput uniqueName={`T${tier}_METALBAR`} />
+            <TableInput uniqueName={`T${tier}_METALBAR_LEVEL1@1`} />
+            <TableInput uniqueName={`T${tier}_METALBAR_LEVEL2@2`} />
+            <TableInput uniqueName={`T${tier}_METALBAR_LEVEL3@3`} />
+            <TableInput uniqueName={`T${tier}_METALBAR_LEVEL4@4`} />
           </tr>
           <tr>
             <td>Cloth</td>
-            <td>
-              <TableInput uniqueName={`T${tier}_CLOTH`} />
-            </td>
-            <td>
-              <TableInput uniqueName={`T${tier}_CLOTH_LEVEL1@1`} />
-            </td>
-            <td>
-              <TableInput uniqueName={`T${tier}_CLOTH_LEVEL2@2`} />
-            </td>
-            <td>
-              <TableInput uniqueName={`T${tier}_CLOTH_LEVEL3@3`} />
-            </td>
+            <TableInput uniqueName={`T${tier}_CLOTH`} />
+            <TableInput uniqueName={`T${tier}_CLOTH_LEVEL1@1`} />
+            <TableInput uniqueName={`T${tier}_CLOTH_LEVEL2@2`} />
+            <TableInput uniqueName={`T${tier}_CLOTH_LEVEL3@3`} />
+            <TableInput uniqueName={`T${tier}_CLOTH_LEVEL4@4`} />
           </tr>
           <tr>
             <td>Leather</td>
-            <td>
-              <TableInput uniqueName={`T${tier}_LEATHER`} />
-            </td>
-            <td>
-              <TableInput uniqueName={`T${tier}_LEATHER_LEVEL1@1`} />
-            </td>
-            <td>
-              <TableInput uniqueName={`T${tier}_LEATHER_LEVEL2@2`} />
-            </td>
-            <td>
-              <TableInput uniqueName={`T${tier}_LEATHER_LEVEL3@3`} />
-            </td>
+            <TableInput uniqueName={`T${tier}_LEATHER`} />
+            <TableInput uniqueName={`T${tier}_LEATHER_LEVEL1@1`} />
+            <TableInput uniqueName={`T${tier}_LEATHER_LEVEL2@2`} />
+            <TableInput uniqueName={`T${tier}_LEATHER_LEVEL3@3`} />
+            <TableInput uniqueName={`T${tier}_LEATHER_LEVEL4@4`} />
           </tr>
         </tbody>
       </table>
@@ -79,4 +53,4 @@ function ResourceTable({ tier }) {
   );
 }
 
-export default ResourceTable;
+export default React.memo(ResourceTable);

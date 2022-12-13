@@ -8,18 +8,23 @@ import { getCraftingItems, getResourcePrice } from '../features/info/infoActions
 
 function Login() {
 
-    const { isLoading, userInfo, error } = useSelector((state) => state.user);
-    const dispatch = useDispatch();
-    
+    const { userInfo, error } = useSelector((state) => state.user);
     const { register, handleSubmit} = useForm();
 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     
-    useEffect(() => {
-        dispatch(getResourcePrice());
-        dispatch(getCraftingItems());
 
-        if(userInfo) navigate('/')
+    useEffect(() => {
+
+        if(userInfo) {
+
+            dispatch(getResourcePrice());
+            dispatch(getCraftingItems());
+
+            navigate('/')
+        }
+
     }, [navigate, userInfo, dispatch]);
 
     const submitForm =  (data) => {
@@ -29,6 +34,7 @@ function Login() {
     const content = 
         <section className='login'>
             <div className='form_container'>
+
                 <h1>Login</h1>
 
                 <form onSubmit={handleSubmit(submitForm)} className='form'>
@@ -46,9 +52,10 @@ function Login() {
                             placeholder='   password'
                             required
                         />
-                        <button type='submit' disabled={isLoading} >Sign In</button>
+                        <button type='submit'>Sign In</button>
                     </div>
                 </form>
+
             </div>
         </section>
     
