@@ -9,11 +9,6 @@ function ArtefactTable() {
 
     let arr = [];
 
-    console.log("craftingItems: ")
-    console.log(craftingItems)
-    console.log("start: ")
-    console.log(arr)
-
     for(let item in craftingItems){
         let req = craftingItems[item].craftingrequirements;
 
@@ -23,15 +18,14 @@ function ArtefactTable() {
                 
                 if(Array.isArray(res)){
                     for(let mat in res){
-                        if(res[mat]["@uniquename"].includes("ARTEFACT"))
-                        console.log("name: ", res[mat]["@uniquename"])
+                        if(res[mat]["@uniquename"].includes("ARTEFACT")){
+                            continue
+                        }
                     }
                 }
             }
         }
     }
-    console.log("ned: ")
-    console.log(arr)
 
     const generateRow = (some) => {
         console.log(some);

@@ -11,14 +11,14 @@ function Button({ bid, onClk }) {
     React.useContext(AppContext);
 
  
-    async function on() {
-        // 1. Get item uniquename
-        const item = "T" + clickedTier + "_" + itemName.name;
-        // 2. Get item info
-        const {data} = await axios.post('/info/getItemInfo', {uniquename: item})
-        // 3. Add obj to craftingItems list
-        dispatch(addCraftingItem(data)); 
-    };
+  async function on() {
+      // 1. Get item uniquename
+      const item = "T" + clickedTier + "_" + itemName.name;
+      // 2. Get item info
+      const {data} = await axios.post('/info/getItemInfo', {uniquename: item})
+      // 3. Add obj to craftingItems list
+      dispatch(addCraftingItem(data)); 
+  };
 
 
   const handleClickCreate = () => {
@@ -50,6 +50,17 @@ function Button({ bid, onClk }) {
       </button>
     );
   } 
+  
+  else if (bid.includes("update")) {
+    return (
+      <button
+        className={`${styles.updateButton} ${styles.update}`}
+        onClick={onClk}
+      >
+        Update resource prices
+      </button>
+    );
+  }  
   
   else {
     return (

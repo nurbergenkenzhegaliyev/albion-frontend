@@ -117,7 +117,8 @@ export const removeCraftingItem = createAsyncThunk(
                 }
             }
             const {data} = await axios.post('/info/removeCraftingItem', {id: user.userInfo.id, craftingItem: item}, config);
-            localStorage.setItem('craftingItems', JSON.stringify(data));
+            localStorage.setItem('craftingItems', JSON.stringify(data.craftingItems));
+            localStorage.setItem('prices', JSON.stringify(data.prices));
             return data;
 
         } catch (error) {

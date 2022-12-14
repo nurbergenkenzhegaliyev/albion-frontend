@@ -4,6 +4,7 @@ import { useState } from "react";
 import FirstTable from "./FirstTable/FirstTable";
 import SecondTable from "./SecondTable/SecondTable";
 import { CraftItemContext } from "../../context.js";
+import RemoveButton from "../RemoveButton/RemoveButton.js";
 
 function CraftTable({ item, returnBonus }) {
 
@@ -40,9 +41,18 @@ function CraftTable({ item, returnBonus }) {
       }}
     >
       <div className={styles.main}>
-        <div className={styles.tables_section}>
-          <FirstTable />
-          <SecondTable />
+        <div className={styles.left}>
+          <div className={styles.tables_section}>
+            <FirstTable />
+            <SecondTable />
+          </div>
+        </div>
+        
+        <div className={styles.right}>
+          <div className={styles.content}>
+            right
+          </div>
+          <RemoveButton />
         </div>
       </div>
     </CraftItemContext.Provider>

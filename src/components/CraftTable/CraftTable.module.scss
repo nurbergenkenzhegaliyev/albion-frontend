@@ -2,14 +2,33 @@ $tier4_color: #8bd4ff;
 
 .main {
   width: 1440px;
+  height: 415px;
   margin: 0 auto;
   background-color: #b2b2b258;
-
-  .tables_section {
-    padding: 65px;
-
-    table {
-      border-collapse: collapse;
+  margin-bottom: 30px;
+  
+  display: flex;
+  flex-direction: row;
+  .left {
+    // background-color: #b2b2b258;
+    .tables_section {
+      padding: 65px;
+  
+      table {
+        border-collapse: collapse;
+      }
+    }
+  }
+  .right {
+    background: linear-gradient(90deg, rgba(178,178,178,0) 0%, rgba(195,194,194,0.7) 30%, rgba(195,194,194,1) 100%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    .content {
+      width: 100%;
+      padding: 65px;
+      background-color: rgba($color: #000000, $alpha: 0.3)
     }
   }
 }

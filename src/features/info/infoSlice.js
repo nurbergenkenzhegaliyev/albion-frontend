@@ -81,7 +81,7 @@ const infoSlice = createSlice({
       state.loading = true;
     },
     [addCraftingItem.fulfilled]: (state, { payload }) => {
-      state.loading = false;
+      state.loading = false; 
       state.craftingItems = payload.data;
       state.prices = payload.dataPrices;
     },
@@ -95,7 +95,8 @@ const infoSlice = createSlice({
     },
     [removeCraftingItem.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.craftingItems = payload;
+      state.craftingItems = payload.craftingItems;
+      state.prices = payload.prices;
     },
     [removeCraftingItem.rejected]: (state, { payload }) => {
       state.loading = false;

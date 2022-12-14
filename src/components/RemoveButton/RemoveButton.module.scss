@@ -1,0 +1,13 @@
+$tier4_color: #8bd4ff;
+
+.removeButton {
+    background-color: rgba($color: #838383, $alpha: 0.5);
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+
+    &:hover {
+        // background-color: rgba($color: #838383, $alpha: 1);
+        background-color: $tier4_color;
+    }
+}
