@@ -759,7 +759,7 @@ function Craft() {
       </div>
       {
         craftingItems.map((obj, index) => (
-                <CraftTable key={obj["@uniquename"]} item={obj} returnBonus={returnBonus} />
+          <CraftTable key={obj["@uniquename"]} item={obj} returnBonus={returnBonus} />
         ))
       }
     </div>

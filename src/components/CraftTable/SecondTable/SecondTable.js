@@ -40,9 +40,9 @@ function SecondTable() {
     );
   };
 
-  useEffect(() => {
-    console.log("something");
-  }, [sellCost]);
+  // useEffect(() => {
+  //   console.log("something");
+  // }, [sellCost]);
 
   const looping = (materials, enchantment) => {
     let sum = 0;

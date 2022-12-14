@@ -5,9 +5,14 @@ import FirstTable from "./FirstTable/FirstTable";
 import SecondTable from "./SecondTable/SecondTable";
 import { CraftItemContext } from "../../context.js";
 import RemoveButton from "../RemoveButton/RemoveButton.js";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { removeCraftingItem } from "../../features/info/infoActions";
 
+  
 function CraftTable({ item, returnBonus }) {
 
+  const dispatch = useDispatch();
   const uniquename = item["@uniquename"];
 
   // Tier of crafting item -> colour difference
@@ -26,6 +31,22 @@ function CraftTable({ item, returnBonus }) {
   const [option, setOption] = useState("0");
 
   const [amount, setAmount] = useState(10);
+  const [removing, setRemoving] = useState(false)
+
+  async function remove() {
+    const { data } = await axios.post("/info/getItemInfo", {
+      uniquename: uniquename,
+    });
+    // setTimeout(() => {
+      dispatch(removeCraftingItem(data));
+    // }, 100);
+  }
+  const handleRemove = () => {
+    setRemoving(true);
+    remove();
+  }
+
+  let animation = (removing) ? styles.fade_out:styles.fade_in;
 
   return (
     <CraftItemContext.Provider
@@ -40,7 +61,7 @@ function CraftTable({ item, returnBonus }) {
         setOption,
       }}
     >
-      <div className={styles.main}>
+      <div className={`${styles.main} ${animation}`}>
         <div className={styles.left}>
           <div className={styles.tables_section}>
             <FirstTable />
@@ -52,7 +73,7 @@ function CraftTable({ item, returnBonus }) {
           <div className={styles.content}>
             right
           </div>
-          <RemoveButton />
+          <RemoveButton removeFunc = {handleRemove}/>
         </div>
       </div>
     </CraftItemContext.Provider>

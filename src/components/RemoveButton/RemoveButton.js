@@ -1,26 +1,11 @@
 import React from "react";
 import styles from "./RemoveButton.module.scss";
-import { removeCraftingItem } from "../../features/info/infoActions";
-import { CraftItemContext } from "../../context";
-import axios from "axios";
-import { useDispatch } from "react-redux";
-function RemoveButton() {
 
-    
-  let { uniquename } = React.useContext(CraftItemContext);
+function RemoveButton({removeFunc}) {
 
-  const dispatch = useDispatch();
-    async function remove() {
-      const { data } = await axios.post("/info/getItemInfo", {
-        uniquename: uniquename,
-      });
 
-      dispatch(removeCraftingItem(data));
-    }
-
-  // onClick={remove()}
   return (
-    <div className={`${styles.removeButton} `} onClick={() => remove()}>
+    <div className={`${styles.removeButton} `} onClick={() => removeFunc()}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="50"

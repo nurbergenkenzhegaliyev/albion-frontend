@@ -30,9 +30,12 @@
     overflow-y: scroll;
 
     .resources {
-
+        overflow: hidden;
         h1{
             margin-left: 80px;
+        }
+        .resourcesTab{
+            height: 100%;
         }
     }
 }
@@ -41,3 +44,9 @@
     transform: scale(1);
 }
 
+.title {
+    cursor: pointer;
+    &:hover{
+        color: gray;
+    }
+}

@@ -16,9 +16,13 @@ $tier4_color: hsl(0, 0%, 100%);
     
     tr th:first-child,
     tr td:first-child {
-        width: 154px;
+        max-width: 154px;
+        min-width: 154px;
         text-align: left;
         padding-left: 25px;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
     }
     
     th {

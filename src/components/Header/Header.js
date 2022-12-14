@@ -1,20 +1,16 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React,{ useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { logout } from '../../features/auth/userSlice.js';
 import {deleteInfo} from '../../features/info/infoSlice.js'
+import jwtDecode from 'jwt-decode';
 
 function Header() {
     
-    // Get userInfo from state to check if user logged in
-    // Otherwise some option will not be allowed
-    const { userInfo } = useSelector((state) => state.user);
     const dispatch = useDispatch();
-
+    const location = useLocation();
     const navigate = useNavigate();
-
     // Logout function
     const handleLogout = () => {
         dispatch(deleteInfo());
@@ -23,6 +19,20 @@ function Header() {
         // Navigate to home('/')
         navigate('/')
     }
+
+    useEffect(() => {
+        const user = localStorage.getItem("userToken");
+        if (user) {
+          const decodedJwt = jwtDecode(user);
+          if (decodedJwt.exp * 1000 < Date.now()) {
+            handleLogout();
+          }
+        }
+    },[location]);
+
+    // Get userInfo from state to check if user logged in
+    // Otherwise some option will not be allowed
+    const { userInfo } = useSelector((state) => state.user);
 
     return (
         <header className={styles.header}>
