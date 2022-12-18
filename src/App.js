@@ -6,6 +6,7 @@ import Home from "./pages/Home.jsx";
 import {AppContext} from "./context.js";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import Protected from "./containers/Protected.js";
 
 function App() {
   const [clickedTier, setClickedTier] = React.useState("");
@@ -15,24 +16,6 @@ function App() {
   });
   const [itemType, setItemType] = React.useState({ url: "none", name: "none" });
   const [itemName, setItemName] = React.useState({ url: "none", name: "none" });
-  const [isAuthenticated, setIsAuthenticated] = React.useState(true);
-
-  // async function getUser() {
-  //   try {
-  //     const response = await axios({
-  //       method: 'post',
-  //       url: '/auth/login',
-  //       data: {
-  //         username: 'user2@mail.ru',
-  //         password: '12345'
-  //       }
-  //     });
-  //     console.log(response);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-  // getUser();
 
   return (
     <AppContext.Provider
@@ -52,7 +35,11 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" exact element={<Home />} />
-            <Route path="/craft" exact element={<Craft />} />
+            <Route path="/craft" exact element={
+              <Protected>
+                <Craft />
+              </Protected>
+            } />
             <Route path="/login" exact element={<Login />} />
             <Route path="/register" exact element={<Register />} />
           </Routes>

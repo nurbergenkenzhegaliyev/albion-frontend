@@ -1,0 +1,44 @@
+.main {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+    .container {
+        width: 1440px;
+        height: 100%;
+        background-color: rgb(228, 228, 228);
+        display: flex;
+        align-items: center;
+        padding: 0 60px;
+
+        .sameBlock {
+            width: 200px;
+            height: 100%;
+            
+            display: flex;
+            align-items: center;
+            justify-content:left;
+            // background-color: aqua;
+
+            input[type="checkbox"] {
+                height: 30px;
+                width: 30px;
+                background-color: red;
+                margin-right: 10px;
+            }
+            .checkLabel {
+                display: inline-block;
+                width: 100%;
+            }
+
+            select {
+                height: 30px;
+                width: 150px;
+                border: none;
+                font-size: 16px; 
+                text-align-last:center;   
+            }
+        }
+    }
+}

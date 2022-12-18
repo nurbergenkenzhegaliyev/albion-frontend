@@ -2,47 +2,43 @@ import React from "react";
 import styles from "./SecondTable.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { CraftItemContext } from "../../../context.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { addCraftingItemSellPrice } from "../../../features/info/infoActions.js";
-import { useEffect } from "react";
 
 function SecondTable() {
   const { resources } = useSelector((state) => state.info);
+  const dispatch = useDispatch();
 
   let { uniquename, arrayCraftingMethods, tier, option, returnBonus } =
     React.useContext(CraftItemContext);
     
-  const dispatch = useDispatch();
 
   const list = useSelector((state) => state.info.prices);
   let oneitem = {};
   if (list.length > 0) {
     oneitem = list.filter((obj) => obj.name === uniquename)[0];
   }
-  let ar = [0,0,0,0,0];
-  if(oneitem){
-    ar = [...oneitem.priceList]
-  }
+  let ar = oneitem ? [...oneitem.priceList]:[0,0,0,0,0];
 
   const [sellCost, setSellCost] = useState(ar);
 
   const handleSetSellCost = (ench, cost) => {
-    let arr = [...sellCost];
-    arr[ench] = cost;
+    setSellCost(sellCost.map((obj, index) => {
+      if(index === ench){
+        obj = cost;
+      }
+      return obj;
+    }))
+  };
 
-    setSellCost(arr);
-
+  useEffect(() => {
     dispatch(
       addCraftingItemSellPrice({
         name: uniquename,
-        priceList: arr,
+        priceList: sellCost,
       })
     );
-  };
-
-  // useEffect(() => {
-  //   console.log("something");
-  // }, [sellCost]);
+  },[sellCost])
 
   const looping = (materials, enchantment) => {
     let sum = 0;
@@ -115,6 +111,7 @@ function SecondTable() {
           <input
             type="text"
             value={sellCost[ench]}
+            className={styles["tier"+tier]}
             onChange={(e) => handleSetSellCost(ench, e.currentTarget.value)}
           />
         </td>

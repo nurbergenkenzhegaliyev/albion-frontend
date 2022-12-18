@@ -5,10 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 function HomeContainer() {
 
     const container = (
-        <div className='container'>
-            <Link to="/craft">
-                <button> get</button>
-            </Link>
+        <div className={styles.container}>
+          <button> get</button>
         </div>
     )
 

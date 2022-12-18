@@ -1,0 +1,19 @@
+.itemChoose {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 350px;
+
+    .chooseButtons {
+        display: flex;
+        justify-content: space-between;
+        width: 332px;
+        
+        img {
+            width: 90px;
+            height: 90px;
+            cursor: pointer;
+        }
+    }
+}

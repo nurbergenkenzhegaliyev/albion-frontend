@@ -8,12 +8,12 @@ function ResourceTable({ tier }) {
       <table className={styles.resourceTable}>
         <tbody>
           <tr>
-            <th>Tier {tier}</th>
-            <th>.0</th>
-            <th>.1</th>
-            <th>.2</th>
-            <th>.3</th>
-            <th>.4</th>
+            <th className={styles['tier'+tier]}>Tier {tier}</th>
+            <th className={styles['tier'+tier]}>.0</th>
+            <th className={styles['tier'+tier]}>.1</th>
+            <th className={styles['tier'+tier]}>.2</th>
+            <th className={styles['tier'+tier]}>.3</th>
+            <th className={styles['tier'+tier]}>.4</th>
           </tr>
           <tr>
             <td>Plank</td>

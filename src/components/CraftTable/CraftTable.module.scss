@@ -1,4 +1,4 @@
-$tier4_color: #8bd4ff;
+@import '../../styles/variables';
 
 .main {
   width: 1440px;
@@ -10,6 +10,8 @@ $tier4_color: #8bd4ff;
   
   display: flex;
   flex-direction: row;
+
+
   .left {
     // background-color: #b2b2b258;
     .tables_section {
@@ -35,7 +37,6 @@ $tier4_color: #8bd4ff;
 }
 
 input {
-  background-color: lighten($tier4_color, 15%);
   border: none;
   width: 100%;
   text-align: center;
@@ -154,3 +155,8 @@ input {
     opacity: 0;
   }
 }
+
+
+
+
+

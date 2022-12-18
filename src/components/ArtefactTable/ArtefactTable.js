@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./ArtefactTable.module.scss";
 import TableInput from "../TableInput/TableInput";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import ArtefactTableRow from "./ArtefactTableRow";
 
 function ArtefactTable() {
   const [...craftingItems] = useSelector((state) => state.info.craftingItems);
@@ -18,8 +20,6 @@ function ArtefactTable() {
         if (Array.isArray(res)) {
           for (let mat in res) {
             if (res[mat]["@uniquename"].includes("ARTEFACT")) {
-              // console.log(res[mat]["@uniquename"])
-              console.log(res[mat]["@uniquename"].slice(3));
               arr.push(res[mat]["@uniquename"].slice(3));
             }
           }
@@ -43,14 +43,7 @@ function ArtefactTable() {
         </tr>
         {
             uniq.map(item => (
-                <tr>
-                    <td>{"T4_"+item}</td>
-                    {
-                        [4,5,6,7,8].map(tier => (
-                            <TableInput uniqueName={"T"+tier+"_"+item}/>
-                        ))
-                    }
-                </tr>
+              <ArtefactTableRow key={item} item={item} />
             ))
         }
       </tbody>

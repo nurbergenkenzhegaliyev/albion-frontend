@@ -1,3 +1,5 @@
+@import '../../../styles/variables';
+
 .calculations {
     margin-top: 30px;
     width: 650px;
@@ -25,4 +27,21 @@
             width: 50px;
         }
     }
+}
+
+
+.tier4 {
+    background-color: lighten($tier4_color, 15%);
+}
+.tier5 {
+    background-color: lighten($tier5_color, 15%);
+}
+.tier6 {
+    background-color: lighten($tier6_color, 15%);
+}
+.tier7 {
+    background-color: lighten($tier7_color, 15%);
+}
+.tier8 {
+    background-color: lighten($tier8_color, 15%);
 }

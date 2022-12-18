@@ -1,4 +1,4 @@
-$tier4_color: #8bd4ff;
+@import '../../styles/variables';
 
 .resourceTable {
     margin-left: 80px;
@@ -18,11 +18,27 @@ $tier4_color: #8bd4ff;
     tr td:first-child {
         width: 154px;
         text-align: left;
-        padding-left: 25px;
+        padding-left: 15px;
     }
-    
-    th {
+    .tier4 {
         background-color: $tier4_color;
     }
+    .tier5 {
+    background-color: $tier5_color;
+    }
+    .tier6 {
+    background-color: $tier6_color;
+    }
+    .tier7 {
+    background-color: $tier7_color;
+    }
+    .tier8 {
+    background-color: $tier8_color;
+    }
 }
+
+
+
+
+  
 

@@ -1,29 +1,47 @@
+@import '../../../styles/variables';
+
 .hide {
-    display: none;
+  display: none;
 }
 
 .first_table {
-    width: 660px;
+  width: 660px;
 
-    table {
-        table-layout: fixed;
-        display: block;
-        background-color: white;
-        width: 100%;
+  table {
+    table-layout: fixed;
+    display: block;
+    background-color: white;
+    width: 100%;
+  }
+
+  td,
+  th {
+    max-width: 100px;
+    min-width: 100px;
+    text-align: center;
+    height: 24px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+
+    &:nth-child(4) {
+      width: 100%;
     }
-    
-    td, th {
-        max-width: 100px;
-        min-width: 100px;
-        text-align: center;
-        height: 24px;
-        white-space: nowrap;
-        overflow: hidden !important;
-        text-overflow: ellipsis;
-        
-        &:nth-child(4) {
-            width: 100%;
-        }
-    }
+  }
 }
 
+.tier4 {
+    background-color: lighten($tier4_color, 15%);
+}
+.tier5 {
+    background-color: lighten($tier5_color, 15%);
+}
+.tier6 {
+    background-color: lighten($tier6_color, 15%);
+}
+.tier7 {
+    background-color: lighten($tier7_color, 15%);
+}
+.tier8 {
+    background-color: lighten($tier8_color, 15%);
+}

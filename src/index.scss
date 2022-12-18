@@ -1,4 +1,4 @@
-
+@import './styles/variables.scss';
 
 body {
     margin: 0;
@@ -14,97 +14,9 @@ body {
 
 .wrapper{
     background: #FFFFFF;
-    max-width: 1920px;
+    max-width: 100vw;
     margin: 0 auto;
 }
 
-.craft {
-    background-color: #EEEEF0;
 
-    .itemChoose {
-        height: 300px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 350px;
-
-        .chooseButtons {
-            display: flex;
-            justify-content: space-between;
-            width: 332px;
-            
-
-            img {
-                width: 90px;
-                height: 90px;
-                cursor: pointer;
-            }
-        }
-        .tierButtons {
-            height: 70px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-    }
-}
-
-.login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
-
-    .form_container {
-        width: 400px;
-        height: 350px;
-        display: flex;
-        justify-content: center;
-        h1 {
-            margin-top: 50px;
-            width: 200px;
-            position: absolute;
-
-        }
-        .form {
-            border-radius: 5px;
-            background-color: #EEEEF0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-            
-            .form_line {
-                width: 200px;
-                input {
-                    border-radius: inherit;
-                    border: 1px solid gray;
-                    height: 30px;
-                    width: 100%;
-                    margin-bottom: 20px;
-                }
-                button {
-                    height: 30px;
-                    width: 100%;
-                    background-color: transparent;
-                    border: 1px solid gray;
-                    cursor: pointer;
-                    &:hover {
-                        background-color: #FF5C00;
-                    }
-                }
-            }
-        }
-    }
-    
-}
 

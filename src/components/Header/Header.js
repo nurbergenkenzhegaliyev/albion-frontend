@@ -42,23 +42,28 @@ function Header() {
                 </div>
             </Link>
 
-            <ul>
-                <Link to={ userInfo ? "/craft" : "#"} >
-                    <li>
-                        Craft
-                    </li>
-                </Link>
-                <Link to="/">
-                    <li>
-                        home
-                    </li>
-                </Link>
-                <Link to="/">
-                    <li>
-                        home
-                    </li>
-                </Link>
-            </ul>
+            {
+                userInfo ? (
+                    <ul>
+                        <Link to={ userInfo ? "/craft" : "#"} >
+                            <li>
+                                Craft
+                            </li>
+                        </Link>
+                        <Link to="/">
+                            <li>
+                                home
+                            </li>
+                        </Link>
+                        <Link to="/">
+                            <li>
+                                home
+                            </li>
+                        </Link>
+                    </ul>
+                ):("")
+
+            }
 
             {userInfo ? (
                 <div className={styles.auth_container}>

@@ -7,7 +7,6 @@ import { useState } from 'react';
 const Modal = ({active, setActive}) => {
 
     const [resourcesTabOpen, setResourcesTabOpen] = useState(true);
-    console.log(resourcesTabOpen)
 
     return (
         <div className={active ? [`${styles.modal} ${styles.active}`]:styles.modal} onClick={() => setActive(false)}>
