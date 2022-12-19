@@ -2,11 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { registerUser, userLogin } from "./authActions";
 
 
-function decodeJwt(token) {
-    var base64Payload = token.split(".")[1];
-    var payloadBuffer = Buffer.from(base64Payload, "base64");
-    return JSON.parse(payloadBuffer.toString());
-}
 
 const userToken = localStorage.getItem('userToken') ? localStorage.getItem('userToken') : null;
 const userInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
