@@ -1,14 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import styles from "./FirstTable.module.scss";
 import { CraftItemContext } from "../../../context.js";
 import CraftItemName from "../CraftItemName/CraftItemName.js";
 import Options from "./Options";
 
 function FirstTable() {
-  let { arrayCraftingMethods, option, amount, setAmount, tier} =
-    React.useContext(CraftItemContext);
-
-  
+  let {arrayCraftingMethods, option} = React.useContext(CraftItemContext);
 
   const mtable = arrayCraftingMethods.map((obj, index) => (
       <table id={index} key={index} >
@@ -28,4 +25,4 @@ function FirstTable() {
   );
 }
 
-export default FirstTable;
+export default React.memo(FirstTable);

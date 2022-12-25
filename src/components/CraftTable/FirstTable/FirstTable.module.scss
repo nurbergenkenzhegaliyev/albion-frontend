@@ -24,10 +24,11 @@
     overflow: hidden !important;
     text-overflow: ellipsis;
 
-    &:nth-child(4) {
-      width: 100%;
-    }
+
   }
+}
+.lastWidth {
+      width: 100%;
 }
 
 .tier4 {

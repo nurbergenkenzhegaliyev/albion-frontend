@@ -24,4 +24,4 @@ function RemoveButton({removeFunc}) {
   );
 }
 
-export default RemoveButton;
+export default React.memo(RemoveButton);

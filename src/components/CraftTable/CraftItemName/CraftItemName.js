@@ -26,8 +26,6 @@ function CraftItemName() {
         getter(uniquename);
     }, [uniquename])
     
-    // const localizedName = getLocalization(uniquename, "EN-US");
-    // console.log(getLocalization(uniquename, "EN-US"))
 
     return (
         <div className={`${styles.header} ${styles["tier"+tier]}`}>
@@ -44,4 +42,4 @@ function CraftItemName() {
     )
 }
 
-export default CraftItemName;
+export default React.memo(CraftItemName)

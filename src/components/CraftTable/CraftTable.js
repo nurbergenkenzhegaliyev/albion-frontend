@@ -80,4 +80,4 @@ function CraftTable({ item, returnBonus }) {
   );
 }
 
-export default CraftTable;
+export default React.memo(CraftTable);

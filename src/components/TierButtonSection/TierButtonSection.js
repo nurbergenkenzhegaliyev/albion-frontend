@@ -20,4 +20,4 @@ function TierButtonSection() {
   )
 }
 
-export default TierButtonSection
+export default React.memo(TierButtonSection)

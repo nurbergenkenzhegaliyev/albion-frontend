@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Dropdown.module.scss";
-import {AppContext} from "../../context.js";
+import {CraftContext} from "../../context.js";
+import HoverText from "../HoverText/HoverText";
 
 const moveDrop = (arr) => {
   return (-arr.length / 2) * 90 + 45;
@@ -9,9 +10,9 @@ const moveDrop = (arr) => {
 function Dropdown({ imgLinkArray, type, imgLinkObj }) {
   const [isShown, setIsShown] = React.useState(false);
 
-  let { makerType, setMakerType } = React.useContext(AppContext);
-  let { itemType, setItemType } = React.useContext(AppContext);
-  let { itemName, setItemName } = React.useContext(AppContext);
+  let { makerType, setMakerType } = React.useContext(CraftContext);
+  let { itemType, setItemType } = React.useContext(CraftContext);
+  let { itemName, setItemName } = React.useContext(CraftContext);
 
   const onClickMaker = (img) => {
     setMakerType(img);
@@ -26,7 +27,7 @@ function Dropdown({ imgLinkArray, type, imgLinkObj }) {
   return (
     <>
       {type.includes("maker") ? (
-        <div className={styles.dropdown}>
+        <div className={styles.dropdown }>
           <img
             onMouseEnter={() => setIsShown(true)}
             onMouseLeave={() => setIsShown(false)}
@@ -61,7 +62,9 @@ function Dropdown({ imgLinkArray, type, imgLinkObj }) {
           )}
         </div>
       ) : type.includes("item") ? (
+        <>
         <div className={styles.dropdown}>
+          {(makerType.name.includes("none") && isShown) ? (<HoverText>Choose item maker</HoverText>):""}
           <img
             onMouseEnter={() => setIsShown(true)}
             onMouseLeave={() => setIsShown(false)}
@@ -96,8 +99,10 @@ function Dropdown({ imgLinkArray, type, imgLinkObj }) {
             </div>
           )}
         </div>
+        </>
       ) : (
         <div className={styles.dropdown}>
+        {(itemType.name.includes("none") && isShown) ? (<HoverText>Choose item type</HoverText>):""}
           <img
             onMouseEnter={() => setIsShown(true)}
             onMouseLeave={() => setIsShown(false)}
@@ -135,4 +140,4 @@ function Dropdown({ imgLinkArray, type, imgLinkObj }) {
   );
 }
 
-export default Dropdown;
+export default React.memo(Dropdown);

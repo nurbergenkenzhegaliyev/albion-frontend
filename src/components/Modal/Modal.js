@@ -31,4 +31,4 @@ const Modal = ({active, setActive}) => {
     )
 }
 
-export default Modal;
+export default React.memo(Modal);

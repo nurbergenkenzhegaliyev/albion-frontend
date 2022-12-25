@@ -6,11 +6,12 @@ import { logout } from '../../features/auth/userSlice.js';
 import {deleteInfo} from '../../features/info/infoSlice.js'
 import jwtDecode from 'jwt-decode';
 
-function Header() {
+export default React.memo(function Header() {
     
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
+
     // Logout function
     const handleLogout = () => {
         dispatch(deleteInfo());
@@ -20,6 +21,7 @@ function Header() {
         navigate('/')
     }
 
+    // Check user token for expiration
     useEffect(() => {
         const user = localStorage.getItem("userToken");
         if (user) {
@@ -35,62 +37,67 @@ function Header() {
     const { userInfo } = useSelector((state) => state.user);
 
     return (
-        <header className={styles.header}>
-            <Link to="/">
-                <div>
-                    <h3 className={styles.logo_text}>Albion crafter</h3>
-                </div>
-            </Link>
+        <div className={styles.wrapper}>
+            <header className={styles.header}>
+                <Link to="/">
+                    <div>
+                        <h3 className={styles.logo_text}>Albion crafter</h3>
+                    </div>
+                </Link>
 
-            {
-                userInfo ? (
-                    <ul>
-                        <Link to={ userInfo ? "/craft" : "#"} >
-                            <li>
-                                Craft
-                            </li>
-                        </Link>
-                        <Link to="/">
-                            <li>
-                                home
-                            </li>
-                        </Link>
-                        <Link to="/">
-                            <li>
-                                home
-                            </li>
-                        </Link>
-                    </ul>
-                ):("")
+                {
+                    userInfo ? (
+                        <ul>
+                            <Link to="/craft" >
+                                <li>
+                                    Craft
+                                </li>
+                            </Link>
+                            <Link to="/">
+                                <li>
+                                    home
+                                </li>
+                            </Link>
+                            <Link to="/">
+                                <li>
+                                    home
+                                </li>
+                            </Link>
+                        </ul>
+                    ):("")
 
-            }
+                }
 
-            {userInfo ? (
-                <div className={styles.auth_container}>
-                    <span>
-                        {userInfo.username}
-                    </span>
-                    <button onClick={handleLogout} className={styles.auth}>
-                        Logout
-                    </button>
-                </div>
-            ) : (
-                <div className={styles.auth_container}>
-                    <Link to="/login">
-                        <span className={styles.auth}>
-                            Login
+                {userInfo ? 
+                (
+                    <div className={styles.auth_container}>
+                        <span>
+                            {userInfo.username}
                         </span>
-                    </Link>
-                    <Link to="/register">
-                        <span className={styles.auth}>
-                            Register
-                        </span>
-                    </Link>
-                </div>
-            )} 
-                
-        </header>
+                        <button onClick={handleLogout} className={styles.auth}>
+                            Logout
+                        </button>
+                    </div>
+                )
+                : 
+                (
+                    <div className={styles.auth_container}>
+                        <Link to="/login">
+                            <span className={styles.auth}>
+                                Login
+                            </span>
+                        </Link>
+                        <Link to="/register">
+                            <span className={styles.auth}>
+                                Register
+                            </span>
+                        </Link>
+                    </div>
+                )} 
+                    
+            </header>
+        </div>
+        
     )
-}
+})
 
-export default Header;

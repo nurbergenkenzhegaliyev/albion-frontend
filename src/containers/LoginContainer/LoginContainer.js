@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -6,8 +6,8 @@ import { userLogin } from '../../features/auth/authActions';
 import { getCraftingItems, getResourcePrice } from '../../features/info/infoActions';
 import styles from './LoginContainer.module.scss'
 
-function LoginContainer() {
-
+export default React.memo(function LoginContainer() {
+    console.log(1)
     const { userInfo, error } = useSelector((state) => state.user);
     const { register, handleSubmit} = useForm();
 
@@ -15,17 +15,13 @@ function LoginContainer() {
     const navigate = useNavigate();
     
 
-    useEffect(() => {
+    if(userInfo) {
 
-        if(userInfo) {
+        dispatch(getResourcePrice());
+        dispatch(getCraftingItems());
 
-            dispatch(getResourcePrice());
-            dispatch(getCraftingItems());
-
-            navigate('/')
-        }
-
-    }, [navigate, userInfo, dispatch, error]);
+        navigate('/')
+    }
 
     const submitForm =  (data) => {
         dispatch(userLogin(data));
@@ -63,6 +59,5 @@ function LoginContainer() {
     
 
     return content;
-}
+})
 
-export default LoginContainer;

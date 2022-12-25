@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import styles from "./CityBonus.module.scss";
+
 function CityBonus() {
   const [havePremium, setHavePremium] = useState(false);
   const [useFocus, setUseFocus] = useState(false);
@@ -51,4 +52,4 @@ function CityBonus() {
   );
 }
 
-export default CityBonus;
+export default React.memo(CityBonus)

@@ -33,4 +33,4 @@ function ArtefactTableRow({item}) {
   )
 }
 
-export default ArtefactTableRow
+export default React.memo(ArtefactTableRow)

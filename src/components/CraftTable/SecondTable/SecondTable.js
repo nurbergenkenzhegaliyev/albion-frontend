@@ -97,7 +97,7 @@ function SecondTable() {
     sum = looping(materials, enchantment);
 
     // Return total cost of craft
-    return sum;
+    return Math.ceil(sum);
   };
 
   const generateRows = (tier, ench) => {
@@ -135,4 +135,4 @@ function SecondTable() {
   );
 }
 
-export default SecondTable;
+export default React.memo(SecondTable);

@@ -7,13 +7,17 @@ function Options({ obj }) {
   let { amount, setAmount, tier } = React.useContext(CraftItemContext);
 
   let uniquename = null;
-  for (let item in obj.craftresource) {
-    if (obj.craftresource[item]["@uniquename"].includes("ARTEFACT")) {
-      uniquename = obj.craftresource[item]["@uniquename"];
+
+  if(Array.isArray(obj.craftresource)){
+    for (let item in obj.craftresource) {
+      if (obj.craftresource[item]["@uniquename"].includes("ARTEFACT")) {
+        uniquename = obj.craftresource[item]["@uniquename"];
+      }
     }
   }
 
-  const [localizedName, setLocalizedName] = React.useState("s");
+
+  const [localizedName, setLocalizedName] = React.useState("default");
   const getter = async (uniqueName) => {
     const response = await axios.post("/info/getItemLocalization", {
       uniqueName,
@@ -22,7 +26,9 @@ function Options({ obj }) {
   };
 
   useEffect(() => {
-    getter(uniquename);
+    if(uniquename!=null){
+      getter(uniquename);
+    }
   }, [uniquename]);
 
   const genrateFirstRow = (title, object, str) => {
@@ -31,7 +37,7 @@ function Options({ obj }) {
         <th>{title}</th>
         {Array.isArray(object.craftresource) ? (
           object.craftresource.map((resource, index) => (
-            <th key={resource[str] + index}>
+            <th key={resource[str] + index} className={resource[str].includes("ARTEFACT")||resource[str].includes("TOKEN") ? styles.lastWidth:""}>
               {resource[str].includes("ARTEFACT")
                 ? localizedName
                 : resource[str].slice(3)}
@@ -45,6 +51,7 @@ function Options({ obj }) {
       </tr>
     );
   };
+
   const genrateRow = (title, object, str) => {
     return (
       <tr>
@@ -95,4 +102,4 @@ function Options({ obj }) {
   );
 }
 
-export default Options;
+export default React.memo(Options);

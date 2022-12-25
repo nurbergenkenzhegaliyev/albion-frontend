@@ -1,8 +1,12 @@
 import React from "react";
 import CraftContainer from "../containers/CraftContainer/CraftContainer";
+import Header from "../components/Header/Header";
 
 function Craft() {
-  return <CraftContainer />;
+  
+  return <>
+          <CraftContainer />
+        </>;
 }
 
-export default Craft;
+export default React.memo(Craft);

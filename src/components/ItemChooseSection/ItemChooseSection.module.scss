@@ -1,19 +1,25 @@
-.itemChoose {
-    height: 200px;
+.wrapper {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 350px;
-
-    .chooseButtons {
+    justify-content: center;
+    .itemChoose {
+        height: 200px;
         display: flex;
+        align-items: center;
         justify-content: space-between;
-        width: 332px;
-        
-        img {
-            width: 90px;
+        padding: 0 60px;
+        width: 1440px;
+    
+        .chooseButtons {
+            display: flex;
+            justify-content: space-between;
+            width: 332px;
             height: 90px;
-            cursor: pointer;
+            
+            img {
+                width: 90px;
+                height: 90px;
+                cursor: pointer;
+            }
         }
     }
 }

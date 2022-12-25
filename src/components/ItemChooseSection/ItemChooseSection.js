@@ -6,9 +6,6 @@ import * as Constants from '../../constants/constants.js'
 import TierButtonSection from '../TierButtonSection/TierButtonSection.js';
 import styles from './ItemChooseSection.module.scss'
 
-
-
-
 const makers = Constants.MAKERS;
 const types = Constants.TYPES;
 const items = Constants.ITEMS;
@@ -29,20 +26,22 @@ function ItemChooseSection() {
     }, [modalActive]);
 
   return (
-    <div className={styles.itemChoose}>
-        <div className={styles.chooseButtons}>
-          <Dropdown imgLinkArray={makers} type="maker" />
-          <Dropdown imgLinkObj={types} type="item" />
-          <Dropdown imgLinkObj={items} type="name" />
-        </div>
+    <div className={styles.wrapper}>
+      <div className={styles.itemChoose}>
+          <div className={styles.chooseButtons}>
+            <Dropdown imgLinkArray={makers} type="maker" />
+            <Dropdown imgLinkObj={types} type="item" />
+            <Dropdown imgLinkObj={items} type="name" />
+          </div>
 
-        <TierButtonSection />
+          <TierButtonSection />
 
-        <Button onClk={setModalActive} bid="update" />
+          <Button onClk={setModalActive} bid="update" />
 
-        <Modal active={modalActive} setActive={setModalActive} />
+          <Modal active={modalActive} setActive={setModalActive} />
+      </div>
     </div>
   )
 }
 
-export default ItemChooseSection
+export default React.memo(ItemChooseSection);
