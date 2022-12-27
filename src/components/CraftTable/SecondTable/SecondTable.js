@@ -2,25 +2,16 @@ import React from "react";
 import styles from "./SecondTable.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { CraftItemContext } from "../../../context.js";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { addCraftingItemSellPrice } from "../../../features/info/infoActions.js";
 
 function SecondTable() {
   const { resources } = useSelector((state) => state.info);
   const dispatch = useDispatch();
 
-  let { uniquename, arrayCraftingMethods, tier, option, returnBonus } =
+  const { uniquename, arrayCraftingMethods, tier, option, returnBonus, sellCost, setSellCost } =
     React.useContext(CraftItemContext);
     
-
-  const list = useSelector((state) => state.info.prices);
-  let oneitem = {};
-  if (list.length > 0) {
-    oneitem = list.filter((obj) => obj.name === uniquename)[0];
-  }
-  let ar = oneitem ? [...oneitem.priceList]:[0,0,0,0,0];
-
-  const [sellCost, setSellCost] = useState(ar);
 
   const handleSetSellCost = (ench, cost) => {
     setSellCost(sellCost.map((obj, index) => {
@@ -120,8 +111,8 @@ function SecondTable() {
   };
 
   return (
-    <div className={styles.calculations}>
-      <table className={styles.second_table}>
+    <div className={styles.secondTable}>
+      <table>
         <thead>
           <tr>
             <th>Tier</th>

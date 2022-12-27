@@ -15,6 +15,13 @@
   .left {
     .tables_section {
       padding: 65px;
+      width: 730px;
+
+      .calculations {
+        width: 600px;
+        display: flex;
+        justify-content: space-between;
+      }
   
       table {
         border-collapse: collapse;
@@ -103,7 +110,7 @@ input {
   background-color: red;
 }
 .fade_out {
-  transition: all 0.3s;
+  transition: all 0.5s;
   animation: fadeOut 1s;
   -webkit-animation: fadeOut 1s;
   -moz-animation: fadeOut 1s;

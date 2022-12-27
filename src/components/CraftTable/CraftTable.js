@@ -3,10 +3,11 @@ import styles from "./CraftTable.module.scss";
 import { useState } from "react";
 import FirstTable from "./FirstTable/FirstTable";
 import SecondTable from "./SecondTable/SecondTable";
+import ThirdTable from "./ThirdTable/ThirdTable";
 import { CraftItemContext } from "../../context.js";
 import RemoveButton from "../RemoveButton/RemoveButton.js";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeCraftingItem } from "../../features/info/infoActions";
 
   
@@ -48,6 +49,15 @@ function CraftTable({ item, returnBonus }) {
 
   let animation = (removing) ? styles.fade_out:styles.fade_in;
 
+  const list = useSelector((state) => state.info.prices);
+  let oneitem = {};
+  if (list.length > 0) {
+    oneitem = list.filter((obj) => obj.name === uniquename)[0];
+  }
+  let ar = oneitem ? [...oneitem.priceList]:[0,0,0,0,0];
+
+  const [sellCost, setSellCost] = useState(ar);
+
   return (
     <CraftItemContext.Provider
       value={{
@@ -59,13 +69,18 @@ function CraftTable({ item, returnBonus }) {
         tier,
         uniquename,
         setOption,
+        sellCost,
+        setSellCost
       }}
     >
       <div className={`${styles.main} ${animation}`}>
         <div className={styles.left}>
           <div className={styles.tables_section}>
             <FirstTable />
-            <SecondTable />
+            <div className={styles.calculations}>
+              <SecondTable />
+              <ThirdTable />
+            </div>
           </div>
         </div>
         

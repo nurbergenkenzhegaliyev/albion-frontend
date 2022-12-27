@@ -1,0 +1,25 @@
+.thirdTable {
+    margin-top: 30px;
+    background-color: red;
+
+    table {
+        table-layout: fixed;
+        
+    }
+    th {
+        height: 24px;
+    }
+    td {
+        height: 25px;
+    }
+
+    td, th {
+        text-align: center;
+        background-color: white;
+        width: 100px;
+
+        &:nth-child(n+4){
+            width: 50px;
+        }
+    }
+}
