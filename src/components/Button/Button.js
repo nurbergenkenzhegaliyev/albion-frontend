@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Button.module.scss";
-import {CraftContext} from "../../context.js";
+import { CraftContext } from "../../context.js";
 import { useDispatch } from "react-redux";
 import { addCraftingItem } from "../../features/info/infoActions";
 import axios from "axios";

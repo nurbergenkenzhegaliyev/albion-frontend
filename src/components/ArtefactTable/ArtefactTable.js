@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./ArtefactTable.module.scss";
-import TableInput from "../TableInput/TableInput";
 import { useSelector } from "react-redux";
-import axios from "axios";
 import ArtefactTableRow from "./ArtefactTableRow";
 
 function ArtefactTable() {

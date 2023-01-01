@@ -1,13 +1,15 @@
 .wrapper {
+
     display: flex;
     justify-content: center;
+    border-bottom: 2px solid #EEEEF0;
+
     .header {
         height: 55px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 0 70px;
-        border-bottom: 2px solid #EEEEF0;
         width: 1440px;
     
         .logo_text {

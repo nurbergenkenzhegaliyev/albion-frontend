@@ -29,6 +29,18 @@ function CraftTable({ item, returnBonus }) {
     arrayCraftingMethods.push(craftingMethods);
   }
 
+  let resourceAmount = 0;
+  let met = arrayCraftingMethods[0]["craftresource"];
+  if(Array.isArray(met)){
+    for(let res in met){
+      resourceAmount+= Number(met[res]["@count"]);
+    }
+  }
+  else{
+    resourceAmount = Number(met["@count"]);
+  }
+
+
   const [option, setOption] = useState("0");
 
   const [amount, setAmount] = useState(10);
@@ -79,7 +91,7 @@ function CraftTable({ item, returnBonus }) {
             <FirstTable />
             <div className={styles.calculations}>
               <SecondTable />
-              <ThirdTable />
+              <ThirdTable sellCost={sellCost} resourceAmount={resourceAmount}/>
             </div>
           </div>
         </div>

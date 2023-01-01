@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../features/auth/userSlice.js';
-import {deleteInfo} from '../../features/info/infoSlice.js'
+import { deleteInfo } from '../../features/info/infoSlice.js'
 import jwtDecode from 'jwt-decode';
 
 export default React.memo(function Header() {
