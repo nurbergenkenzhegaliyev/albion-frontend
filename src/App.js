@@ -12,7 +12,7 @@ import Protected from "./containers/Protected.js";
 function App() {
   return (
     <AppContext.Provider value={null}>
-      <div className="wrapper clear ">
+      <div className="wrapper clear wrapMiddle">
         <BrowserRouter>
           <Header />
           <Routes>

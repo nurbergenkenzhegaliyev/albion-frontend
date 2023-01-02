@@ -15,7 +15,7 @@ function CraftTable({ item, returnBonus }) {
 
   const dispatch = useDispatch();
   const uniquename = item["@uniquename"];
-
+  const destinyCraftFameFactor = item["@destinycraftfamefactor"];
   // Tier of crafting item -> colour difference
   const tier = uniquename[1];
 
@@ -33,30 +33,21 @@ function CraftTable({ item, returnBonus }) {
   let met = arrayCraftingMethods[0]["craftresource"];
   if(Array.isArray(met)){
     for(let res in met){
-      resourceAmount+= Number(met[res]["@count"]);
+      if(!met[res]["@uniquename"].includes("ARTEFACT")){
+        resourceAmount+= Number(met[res]["@count"]);
+      }
     }
-  }
-  else{
+  } else {
     resourceAmount = Number(met["@count"]);
   }
-
-
   const [option, setOption] = useState("0");
 
   const [amount, setAmount] = useState(10);
   const [removing, setRemoving] = useState(false)
 
-  async function remove() {
-    const { data } = await axios.post("/info/getItemInfo", {
-      uniquename: uniquename,
-    });
-    // setTimeout(() => {
-      dispatch(removeCraftingItem(data));
-    // }, 100);
-  }
   const handleRemove = () => {
     setRemoving(true);
-    remove();
+    dispatch(removeCraftingItem(item));
   }
 
   let animation = (removing) ? styles.fade_out:styles.fade_in;
@@ -82,7 +73,9 @@ function CraftTable({ item, returnBonus }) {
         uniquename,
         setOption,
         sellCost,
-        setSellCost
+        setSellCost,
+        resourceAmount,
+        destinyCraftFameFactor
       }}
     >
       <div className={`${styles.main} ${animation}`}>
@@ -91,7 +84,7 @@ function CraftTable({ item, returnBonus }) {
             <FirstTable />
             <div className={styles.calculations}>
               <SecondTable />
-              <ThirdTable sellCost={sellCost} resourceAmount={resourceAmount}/>
+              <ThirdTable />
             </div>
           </div>
         </div>

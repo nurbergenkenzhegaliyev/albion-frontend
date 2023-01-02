@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { CraftItemContext } from '../../../context';
 import styles from './ThirdTable.module.scss';
 import ThirdTableRow from './ThirdTableRow';
 
-function ThirdTable({sellCost, resourceAmount}) {
+function ThirdTable() {
 
-  // Journal Fame = Material Amount * Fame Multiplier * POW(2, Enchantment Tier)
+  const {sellCost} = useContext(CraftItemContext)
 
   return (
     <div className={styles.thirdTable}>

@@ -5,6 +5,7 @@ import CityBonus from "../../components/CityBonus/CityBonus.js";
 import ItemChooseSection from "../../components/ItemChooseSection/ItemChooseSection.js";
 import styles from './CraftContainer.module.scss'
 import { CraftContext } from "../../context.js";
+import Accordion from "../../components/Accordion/Accordion.js";
 
 const returnBonus = 0.15;
 
@@ -18,7 +19,7 @@ function CraftContainer() {
   });
   const [itemType, setItemType] = React.useState({ url: "none", name: "none" });
   const [itemName, setItemName] = React.useState({ url: "none", name: "none" });
-
+  const [close, setClose] = React.useState(false);
 
   return (
     <CraftContext.Provider 
@@ -36,14 +37,15 @@ function CraftContainer() {
       <div className={styles.craft}>
         <ItemChooseSection />
         <CityBonus />
-
-        {craftingItems.map((obj, index) => (
-          <CraftTable
-            key={obj["@uniquename"]}
-            item={obj}
-            returnBonus={returnBonus}
-          />
-        ))}
+        <Accordion title={"Section name"}>
+          {craftingItems.map((obj, index) => (
+            <CraftTable
+              key={obj["@uniquename"]}
+              item={obj}
+              returnBonus={returnBonus}
+            />
+          ))}
+        </Accordion>
       </div>
     </CraftContext.Provider>
     

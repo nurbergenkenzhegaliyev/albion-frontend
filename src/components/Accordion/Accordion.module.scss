@@ -1,0 +1,35 @@
+.wrapper {
+    width: 1440px;
+    margin: 0 auto;
+
+    
+}
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    .accordionTitle {
+        background-color: rgb(150, 150, 253);
+        height: 50px;
+        font-size: 24px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 20px;
+
+        span {
+            margin-left: 60px;
+        }
+
+    }
+    .accordionContent {
+        overflow: hidden;
+        max-height: 5000px;
+        transition: max-height 1s ease-in-out;
+    }
+    .accordionContent[aria-expanded="true"] {
+        max-height: 0px;
+        transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    }
+}
