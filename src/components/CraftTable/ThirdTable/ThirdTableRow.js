@@ -44,10 +44,6 @@ function ThirdTableRow({ ench, sellPrice }) {
   const percentage = (netProfit / totalExpense).toFixed(2) * 100;
 
   const color = netProfit < 0 ? styles.negtaiveValue : styles.positiveValue;
-  console.log("amount", resourceAmount);
-  console.log("factor", destinyCraftFameFactor);
-
-  console.log(craftingFame(4, resourceAmount, destinyCraftFameFactor))
 
   return (
     <tr>

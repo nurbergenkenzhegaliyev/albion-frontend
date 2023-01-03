@@ -37,8 +37,9 @@ function CraftContainer() {
       <div className={styles.craft}>
         <ItemChooseSection />
         <CityBonus />
-        <Accordion title={"Section name"}>
-          {craftingItems.map((obj, index) => (
+
+        <Accordion title={"Hunter"} length={craftingItems['hunter'].length}>
+          {craftingItems['hunter'].map((obj, index) => (
             <CraftTable
               key={obj["@uniquename"]}
               item={obj}
@@ -46,6 +47,25 @@ function CraftContainer() {
             />
           ))}
         </Accordion>
+        <Accordion title={"Mage"} length={craftingItems['mage'].length}>
+          {craftingItems['mage'].map((obj, index) => (
+            <CraftTable
+              key={obj["@uniquename"]}
+              item={obj}
+              returnBonus={returnBonus}
+            />
+          ))}
+        </Accordion>
+        <Accordion title={"Warrior"} length={craftingItems['warrior'].length}>
+          {craftingItems['warrior'].map((obj, index) => (
+            <CraftTable
+              key={obj["@uniquename"]}
+              item={obj}
+              returnBonus={returnBonus}
+            />
+          ))}
+        </Accordion>
+
       </div>
     </CraftContext.Provider>
     

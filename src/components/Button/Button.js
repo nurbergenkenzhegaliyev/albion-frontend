@@ -7,17 +7,19 @@ import axios from "axios";
 
 function Button({ bid, onClk }) {
   const dispatch = useDispatch();
-  const { clickedTier, setClickedTier, itemName } =
+  const { clickedTier, setClickedTier, itemName, makerType } =
     React.useContext(CraftContext);
 
- 
+  
   async function on() {
       // 1. Get item uniquename
-      const item = "T" + clickedTier + "_" + itemName.name;
+      const uniquename = "T" + clickedTier + "_" + itemName.name;
       // 2. Get item info
-      const {data} = await axios.post('/info/getItemInfo', {uniquename: item})
+      const {data} = await axios.post('/info/getItemInfo', {uniquename})
       // 3. Add obj to craftingItems list
-      dispatch(addCraftingItem(data)); 
+      console.log("sending: ",data)
+      console.log("makerType: ",makerType)
+      dispatch(addCraftingItem({item: data, makerType})); 
   };
 
 

@@ -87,7 +87,7 @@ export const getCraftingItems = createAsyncThunk(
 
 export const addCraftingItem = createAsyncThunk(
   "info/addCraftingItem",
-  async (item, { getState, rejectWithValue }) => {
+  async ({item, makerType}, { getState, rejectWithValue }) => {
     try {
       const { user } = getState();
       const config = {
@@ -97,9 +97,10 @@ export const addCraftingItem = createAsyncThunk(
       };
       const { data } = await axios.post(
         "/info/addCraftingItem",
-        { id: user.userInfo.id, craftingItem: item },
+        { id: user.userInfo.id, craftingItem: item, maker: makerType.name },
         config
       );
+      console.log('data',data)
       localStorage.setItem("craftingItems", JSON.stringify(data.data));
       localStorage.setItem("prices", JSON.stringify(data.dataPrices));
       return data;
@@ -116,8 +117,10 @@ export const addCraftingItem = createAsyncThunk(
 
 export const removeCraftingItem = createAsyncThunk(
   "info/removeCraftingItem",
-  async (item, { getState, rejectWithValue }) => {
+  async ({item, maker}, { getState, rejectWithValue }) => {
     try {
+      console.log("item", item)
+      console.log("maker", maker)
       const { user } = getState();
       const config = {
         headers: {
@@ -126,7 +129,7 @@ export const removeCraftingItem = createAsyncThunk(
       };
       const { data } = await axios.post(
         "/info/removeCraftingItem",
-        { id: user.userInfo.id, craftingItem: item },
+        { id: user.userInfo.id, craftingItem: item, maker },
         config
       );
       localStorage.setItem("craftingItems", JSON.stringify(data.craftingItems));

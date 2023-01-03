@@ -31,11 +31,12 @@
 
     .resources {
         overflow: hidden;
-        h1{
-            margin-left: 80px;
-        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
         .resourcesTab{
-            height: 100%;
+            height: auto
         }
     }
 }
@@ -44,9 +45,3 @@
     transform: scale(1);
 }
 
-.title {
-    cursor: pointer;
-    &:hover{
-        color: gray;
-    }
-}

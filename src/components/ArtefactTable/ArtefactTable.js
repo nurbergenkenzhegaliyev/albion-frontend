@@ -4,26 +4,30 @@ import { useSelector } from "react-redux";
 import ArtefactTableRow from "./ArtefactTableRow";
 
 function ArtefactTable() {
-  const [...craftingItems] = useSelector((state) => state.info.craftingItems);
+  const {craftingItems} = useSelector((state) => state.info);
 
   let arr = [];
 
-  for (let item in craftingItems) {
-    let req = craftingItems[item].craftingrequirements;
+  for (const maker in craftingItems) {
+    let mak = craftingItems[maker];
+    for(let item in mak){
+      let req = mak[item].craftingrequirements;
 
-    if (Array.isArray(req)) {
-      for (let option in req) {
-        let res = req[option].craftresource;
+      if (Array.isArray(req)) {
+        for (let option in req) {
+          let res = req[option].craftresource;
 
-        if (Array.isArray(res)) {
-          for (let mat in res) {
-            if (res[mat]["@uniquename"].includes("ARTEFACT")) {
-              arr.push(res[mat]["@uniquename"].slice(3));
+          if (Array.isArray(res)) {
+            for (let mat in res) {
+              if (res[mat]["@uniquename"].includes("ARTEFACT")) {
+                arr.push(res[mat]["@uniquename"].slice(3));
+              }
             }
           }
         }
       }
     }
+    
 
   }
 

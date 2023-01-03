@@ -5,7 +5,7 @@ function RemoveButton({removeFunc}) {
 
 
   return (
-    <div className={`${styles.removeButton} `} onClick={() => removeFunc()}>
+    <div className={styles.removeButton} onClick={() => removeFunc()}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="50"
