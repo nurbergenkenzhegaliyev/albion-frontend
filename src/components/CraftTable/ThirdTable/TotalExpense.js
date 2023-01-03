@@ -59,9 +59,9 @@ function TotalExpense({ totalExpense, setTotalExpense, ench }) {
 
     // ОКРУГЛ((C13*0,1125/100)*$C$1)
     // Crafting tax
-    let craftingTax = (((480*0.1125)/100)*1400) * amount;
+    // let craftingTax = (((480*0.1125)/100)*1400) * amount;
 
-    sum += craftingTax;
+    // sum += craftingTax;
 
     // Return total cost of craft
     return Math.ceil(sum);

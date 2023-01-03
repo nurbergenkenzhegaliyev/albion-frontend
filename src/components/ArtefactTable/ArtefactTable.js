@@ -6,32 +6,30 @@ import ArtefactTableRow from "./ArtefactTableRow";
 function ArtefactTable() {
   const {craftingItems} = useSelector((state) => state.info);
 
-  let arr = [];
+  let arrayOfUniquenames = [];
 
-  for (const maker in craftingItems) {
-    let mak = craftingItems[maker];
-    for(let item in mak){
-      let req = mak[item].craftingrequirements;
+  for (const makerName in craftingItems) {
+    let maker = craftingItems[makerName];
+    for(let item in maker){
+      let requirement = maker[item].craftingrequirements;
 
-      if (Array.isArray(req)) {
-        for (let option in req) {
-          let res = req[option].craftresource;
+      if (Array.isArray(requirement)) {
+        for (let option in requirement) {
+          let resources = requirement[option].craftresource;
 
-          if (Array.isArray(res)) {
-            for (let mat in res) {
-              if (res[mat]["@uniquename"].includes("ARTEFACT")) {
-                arr.push(res[mat]["@uniquename"].slice(3));
+          if (Array.isArray(resources)) {
+            for (let material in resources) {
+              if (resources[material]["@uniquename"].includes("ARTEFACT")) {
+                arrayOfUniquenames.push(resources[material]["@uniquename"].slice(3));
               }
             }
           }
         }
       }
     }
-    
-
   }
 
-  const uniq = [...new Set(arr)];
+  const unique = [...new Set(arrayOfUniquenames)];
   return (
     <table className={styles.resourceTable}>
       <tbody>
@@ -44,7 +42,7 @@ function ArtefactTable() {
           <th>Tier 8</th>
         </tr>
         {
-            uniq.map(item => (
+            unique.map(item => (
               <ArtefactTableRow key={item} item={item} />
             ))
         }

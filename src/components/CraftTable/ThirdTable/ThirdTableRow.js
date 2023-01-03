@@ -6,34 +6,8 @@ import { CraftItemContext } from "../../../context";
 
 // Journal Fame = Material Amount * Fame Multiplier * POW(2, Enchantment Tier)
 
-// Function to calculate crafting fame for item
-const craftingFame = (tier, resAmount, factor) => {
-  let temp = 0;
-  switch (tier) {
-    case 4:
-      temp = resAmount*22.5
-      break;
-    case 5:
-      temp = resAmount*90
-      break;
-    case 6:
-      temp = resAmount*270
-      break;
-    case 7:
-      temp = resAmount*645
-      break;
-    case 8:
-      temp = resAmount*1395
-      break;
-    default:
-      break;
-  }
-  temp = temp * factor;
 
-  return temp.toFixed(0);
-}
-
-function ThirdTableRow({ ench, sellPrice }) {
+function ThirdTableRow({ ench, sellPrice, journalAmount }) {
   const [totalExpense, setTotalExpense] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);
 
@@ -41,7 +15,7 @@ function ThirdTableRow({ ench, sellPrice }) {
 
   const netProfit = totalIncome - totalExpense;
 
-  const percentage = (netProfit / totalExpense).toFixed(2) * 100;
+  const percentage = ((netProfit / totalExpense) * 100).toFixed(2);
 
   const color = netProfit < 0 ? styles.negtaiveValue : styles.positiveValue;
 
@@ -60,7 +34,7 @@ function ThirdTableRow({ ench, sellPrice }) {
       />
       <td className={color}>{netProfit}</td>
       <td className={color}>{percentage}%</td>
-      <td>10</td>
+      <td>{journalAmount}</td>
     </tr>
   );
 }

@@ -69,11 +69,13 @@ function TotalIncome({ totalIncome, setTotalIncome, ench, sellPrice }) {
 
     // WITH PREMIUM
     // 4% for selling + 2.5% for sell order
-    let selling = sellPrice*amount*(1-0.065)
+    let selling = sellPrice*amount
+
+    let total = Math.ceil((sumOfReturnedMaterials + selling)*(1-0.065))
 
 
     // Return total cost of craft
-    return Math.ceil(sumOfReturnedMaterials+selling);
+    return total;
   };
   
   useEffect(() => {
