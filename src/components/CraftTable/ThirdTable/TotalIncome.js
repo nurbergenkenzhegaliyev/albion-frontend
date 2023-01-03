@@ -1,9 +1,9 @@
-import React, {useEffect} from "react";
+import {useEffect, memo, useContext} from "react";
 import { CraftItemContext } from "../../../context";
 import { useSelector } from "react-redux";
 
 function TotalIncome({ totalIncome, setTotalIncome, ench, sellPrice }) {
-  const { arrayCraftingMethods, amount, option, returnBonus } = React.useContext(CraftItemContext);
+  const { arrayCraftingMethods, amount, option, returnBonus } = useContext(CraftItemContext);
   const { resources } = useSelector((state) => state.info);
 
 
@@ -86,4 +86,4 @@ function TotalIncome({ totalIncome, setTotalIncome, ench, sellPrice }) {
   return <td>{totalIncome}</td>;
 }
 
-export default React.memo(TotalIncome);
+export default memo(TotalIncome);

@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import styles from "./ArtefactTable.module.scss";
 import { useSelector } from "react-redux";
 import ArtefactTableRow from "./ArtefactTableRow";
@@ -51,4 +51,4 @@ function ArtefactTable() {
   );
 }
 
-export default ArtefactTable;
+export default memo(ArtefactTable);

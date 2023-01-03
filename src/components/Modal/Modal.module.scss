@@ -22,7 +22,7 @@
 .modalContent {
     padding: 20px;
     border-radius: 6px;
-    background-color: #dedede;
+    background-color: #c9c9c9;
     width: 800px;
     height: 800px;
     transform: scale(0.5);
@@ -34,10 +34,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-
-        .resourcesTab{
-            height: auto
-        }
+        padding-top: 20px;
     }
 }
 
