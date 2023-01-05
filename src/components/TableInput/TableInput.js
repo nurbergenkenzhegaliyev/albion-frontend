@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import {memo, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeResourcePrice } from "../../features/info/infoActions.js";
 import styles from "./TableInput.module.scss";
@@ -10,7 +10,7 @@ function TableInput({ uniqueName }) {
 
   // State for input
   // Initial state is taken from user state(redux)
-  const [price, setPrice] = React.useState(
+  const [price, setPrice] = useState(
     useSelector((state) => state.info.resources[uniqueName])
   );
 
@@ -33,4 +33,4 @@ function TableInput({ uniqueName }) {
   );
 }
 
-export default React.memo(TableInput);
+export default memo(TableInput);

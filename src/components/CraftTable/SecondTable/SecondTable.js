@@ -9,7 +9,7 @@ function SecondTable() {
   const { resources } = useSelector((state) => state.info);
   const dispatch = useDispatch();
 
-  const { uniquename, arrayCraftingMethods, tier, option, returnBonus, sellCost, setSellCost } =
+  const { uniquename, arrayCraftingMethods, tier, option, returnRate, sellCost, setSellCost } =
     React.useContext(CraftItemContext);
     
 
@@ -62,7 +62,7 @@ function SecondTable() {
       // Add total cost of material to the sum
       sum = !uniquename.includes("ARTEFACT")
         ? //Here is used returBonus. Need to change. ALso add journals.--------->
-          (sum += count * cost * (1 - returnBonus))
+          (sum += count * cost * (1 - returnRate))
         : (sum += count * cost);
     }
     return sum;

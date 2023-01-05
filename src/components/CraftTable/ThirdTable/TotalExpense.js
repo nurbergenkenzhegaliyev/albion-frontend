@@ -2,8 +2,8 @@ import { useEffect, useContext, memo } from "react";
 import { CraftItemContext } from "../../../context";
 import { useSelector } from "react-redux";
 
-function TotalExpense({ totalExpense, setTotalExpense, ench }) {
-  const { arrayCraftingMethods, amount, option } = useContext(CraftItemContext);
+function TotalExpense({ totalExpense, setTotalExpense, ench, journalAmount }) {
+  const { arrayCraftingMethods, amount, option, maker, tier } = useContext(CraftItemContext);
   const { resources } = useSelector((state) => state.info);
 
   const looping = (materials, enchantment) => {
@@ -62,6 +62,9 @@ function TotalExpense({ totalExpense, setTotalExpense, ench }) {
     // let craftingTax = (((480*0.1125)/100)*1400) * amount;
 
     // sum += craftingTax;
+
+    let journalCost = resources["T" + tier + "_JOURNAL_" + maker.toUpperCase()] * journalAmount;
+    sum += journalCost;
 
     // Return total cost of craft
     return Math.ceil(sum);

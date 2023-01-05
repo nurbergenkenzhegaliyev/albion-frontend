@@ -2,8 +2,8 @@ import {useEffect, memo, useContext} from "react";
 import { CraftItemContext } from "../../../context";
 import { useSelector } from "react-redux";
 
-function TotalIncome({ totalIncome, setTotalIncome, ench, sellPrice }) {
-  const { arrayCraftingMethods, amount, option, returnBonus } = useContext(CraftItemContext);
+function TotalIncome({ totalIncome, setTotalIncome, ench, sellPrice, journalAmount }) {
+  const { arrayCraftingMethods, amount, option, returnRate, maker, tier } = useContext(CraftItemContext);
   const { resources } = useSelector((state) => state.info);
 
 
@@ -43,7 +43,7 @@ function TotalIncome({ totalIncome, setTotalIncome, ench, sellPrice }) {
       // Add total cost of material to the sum
       sum += (uniquename.includes("ARTEFACT") ? 0 : count*cost );
     }
-    return sum*amount*returnBonus;
+    return sum*amount*returnRate;
   };
 
   // Function calculates the cost for every enchant
@@ -71,8 +71,12 @@ function TotalIncome({ totalIncome, setTotalIncome, ench, sellPrice }) {
     // 4% for selling + 2.5% for sell order
     let selling = sellPrice*amount
 
+    
+
     let total = Math.ceil((sumOfReturnedMaterials + selling)*(1-0.065))
 
+    let journalCost = resources["T" + tier + "_JOURNAL_" + maker.toUpperCase() + "_FILLED"] * journalAmount;
+    total += journalCost;
 
     // Return total cost of craft
     return total;
@@ -80,7 +84,7 @@ function TotalIncome({ totalIncome, setTotalIncome, ench, sellPrice }) {
   
   useEffect(() => {
     setTotalIncome(calculation(ench))
-  }, [resources, amount, sellPrice, option, returnBonus])
+  }, [resources, amount, sellPrice, option, returnRate])
   
  
   return <td>{totalIncome}</td>;

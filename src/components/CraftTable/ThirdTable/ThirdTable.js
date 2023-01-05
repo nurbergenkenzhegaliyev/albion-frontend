@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext, memo } from "react";
 import { CraftItemContext } from "../../../context";
 import styles from "./ThirdTable.module.scss";
 import ThirdTableRow from "./ThirdTableRow";
@@ -55,7 +55,11 @@ const calculateJournalAmount = (tier, ench, resAmount, factor, itemAmount) => {
 function ThirdTable() {
   const { sellCost, tier, resourceAmount, destinyCraftFameFactor, amount } =
     useContext(CraftItemContext);
-  console.log(calculateJournalAmount(tier, 0, resourceAmount, destinyCraftFameFactor, amount))
+  // console.log('tier:',tier)
+  // console.log('resourceAmount:',resourceAmount)
+  // console.log('destinyCraftFameFactor:',destinyCraftFameFactor)
+  // console.log('amount:',amount)
+  // console.log('amount:',calculateJournalAmount(tier, 0, resourceAmount, destinyCraftFameFactor, amount))
   return (
     <div className={styles.thirdTable}>
       <table>
@@ -80,4 +84,4 @@ function ThirdTable() {
   );
 }
 
-export default React.memo(ThirdTable);
+export default memo(ThirdTable);

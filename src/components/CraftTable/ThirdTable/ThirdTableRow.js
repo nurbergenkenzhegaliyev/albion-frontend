@@ -1,8 +1,7 @@
-import React,{ useState, useContext } from "react";
+import { useState, memo } from "react";
 import TotalExpense from "./TotalExpense";
 import TotalIncome from "./TotalIncome";
 import styles from "./ThirdTable.module.scss";
-import { CraftItemContext } from "../../../context";
 
 // Journal Fame = Material Amount * Fame Multiplier * POW(2, Enchantment Tier)
 
@@ -10,8 +9,6 @@ import { CraftItemContext } from "../../../context";
 function ThirdTableRow({ ench, sellPrice, journalAmount }) {
   const [totalExpense, setTotalExpense] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);
-
-  const { resourceAmount, destinyCraftFameFactor } = useContext(CraftItemContext);
 
   const netProfit = totalIncome - totalExpense;
 
@@ -25,12 +22,14 @@ function ThirdTableRow({ ench, sellPrice, journalAmount }) {
         setTotalExpense={setTotalExpense}
         totalExpense={totalExpense}
         ench={ench}
+        journalAmount={journalAmount}
       />
       <TotalIncome
         setTotalIncome={setTotalIncome}
         totalIncome={totalIncome}
         ench={ench}
         sellPrice={sellPrice}
+        journalAmount={journalAmount}
       />
       <td className={color}>{netProfit}</td>
       <td className={color}>{percentage}%</td>
@@ -39,4 +38,4 @@ function ThirdTableRow({ ench, sellPrice, journalAmount }) {
   );
 }
 
-export default React.memo(ThirdTableRow);
+export default memo(ThirdTableRow);

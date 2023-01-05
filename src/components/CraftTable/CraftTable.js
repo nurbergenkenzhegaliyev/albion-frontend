@@ -5,17 +5,17 @@ import FirstTable from "./FirstTable/FirstTable";
 import SecondTable from "./SecondTable/SecondTable";
 import ThirdTable from "./ThirdTable/ThirdTable";
 import { CraftItemContext } from "../../context.js";
-import { CraftContext } from "../../context.js";
 import RemoveButton from "../RemoveButton/RemoveButton.js";
 import { useDispatch, useSelector } from "react-redux";
 import { removeCraftingItem } from "../../features/info/infoActions";
 
   
-function CraftTable({ item, returnBonus }) {
+function CraftTable({ item, returnRate }) {
 
   const dispatch = useDispatch();
   const uniquename = item["@uniquename"];
-  const destinyCraftFameFactor = item["@destinycraftfamefactor"];
+  const destinyCraftFameFactor = item["@destinycraftfamefactor"] ? item["@destinycraftfamefactor"]:1;
+
   // Tier of crafting item -> colour difference
   const tier = uniquename[1];
 
@@ -78,7 +78,7 @@ function CraftTable({ item, returnBonus }) {
   return (
     <CraftItemContext.Provider
       value={{
-        returnBonus,
+        returnRate,
         arrayCraftingMethods,
         option,
         amount,
@@ -89,7 +89,8 @@ function CraftTable({ item, returnBonus }) {
         sellCost,
         setSellCost,
         resourceAmount,
-        destinyCraftFameFactor
+        destinyCraftFameFactor,
+        maker
       }}
     >
       <div className={`${styles.main} ${animation}`}>

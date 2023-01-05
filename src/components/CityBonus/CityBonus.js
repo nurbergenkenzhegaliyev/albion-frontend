@@ -2,9 +2,7 @@ import React from "react";
 import { useState } from "react";
 import styles from "./CityBonus.module.scss";
 
-function CityBonus() {
-  const [havePremium, setHavePremium] = useState(false);
-  const [useFocus, setUseFocus] = useState(false);
+function CityBonus({focus, setFocus, premium, setPremium,returnRate,setReturnRate }) {
   const [city, setCity] = useState("Lymhurst");
 
   return (
@@ -18,8 +16,8 @@ function CityBonus() {
             id="premium"
             name="premium2"
             value="premium"
-            checked={havePremium}
-            onChange={() => setHavePremium(!havePremium)}
+            checked={premium}
+            onChange={() => setPremium(!premium)}
           />
           <label className="checkLabel" htmlFor="premium">Have premium</label>
         </div>
@@ -31,8 +29,8 @@ function CityBonus() {
               id="focus"
               name="focus"
               value="focus"
-              checked={useFocus}
-              onChange={() => setUseFocus(!useFocus)}
+              checked={focus}
+              onChange={() => setFocus(!focus)}
             />
           <label className="checkLabel" htmlFor="focus">Focus</label>
         </div>
@@ -47,6 +45,11 @@ function CityBonus() {
             <option value="Carleon">Carleon</option>
           </select>
         </div>
+        
+        <div className={styles.sameBlock}>
+          <input onChange={e=>setReturnRate(e.target.value)} value={returnRate} className={styles.returnRate} />
+        </div>
+
       </div>
     </div>
   );
