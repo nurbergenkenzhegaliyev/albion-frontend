@@ -1,0 +1,27 @@
+.wrapper {
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    // background-color: rgb(125, 125, 248);
+    display: flex;
+    justify-content: center;
+
+    ul {
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+        list-style: none;
+        li {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding:  0 40px;
+            height: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            &:hover {
+                background-color: rgb(200, 200, 200);
+            }
+        }
+    }
+}

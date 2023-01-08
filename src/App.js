@@ -7,6 +7,7 @@ import {AppContext} from "./context.js";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import Protected from "./containers/Protected.js";
+import Blog from "./pages/Blog.jsx";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" exact element={<Home />} />
+            <Route path="/blog" exact element={<Blog />} />
             <Route path="/craft" exact element={
               <Protected>
                 <Craft />

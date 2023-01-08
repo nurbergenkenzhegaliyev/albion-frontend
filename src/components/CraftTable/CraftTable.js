@@ -1,6 +1,6 @@
-import React from "react";
+
 import styles from "./CraftTable.module.scss";
-import { useState } from "react";
+import { useState, memo } from "react";
 import FirstTable from "./FirstTable/FirstTable";
 import SecondTable from "./SecondTable/SecondTable";
 import ThirdTable from "./ThirdTable/ThirdTable";
@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeCraftingItem } from "../../features/info/infoActions";
 
   
-function CraftTable({ item, returnRate }) {
+function CraftTable({ item, returnRate, tax }) {
 
   const dispatch = useDispatch();
   const uniquename = item["@uniquename"];
@@ -75,6 +75,7 @@ function CraftTable({ item, returnRate }) {
 
   const [sellCost, setSellCost] = useState(ar);
 
+
   return (
     <CraftItemContext.Provider
       value={{
@@ -90,7 +91,8 @@ function CraftTable({ item, returnRate }) {
         setSellCost,
         resourceAmount,
         destinyCraftFameFactor,
-        maker
+        maker,
+        tax
       }}
     >
       <div className={`${styles.main} ${animation}`}>
@@ -115,4 +117,4 @@ function CraftTable({ item, returnRate }) {
   );
 }
 
-export default React.memo(CraftTable);
+export default memo(CraftTable);

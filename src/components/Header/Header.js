@@ -53,9 +53,9 @@ export default React.memo(function Header() {
                                     Craft
                                 </li>
                             </Link>
-                            <Link to="/">
+                            <Link to="/blog">
                                 <li>
-                                    home
+                                    Blog
                                 </li>
                             </Link>
                             <Link to="/">

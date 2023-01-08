@@ -30,6 +30,7 @@ function ArtefactTable() {
   }
 
   const unique = [...new Set(arrayOfUniquenames)];
+  
   return (
     <table className={styles.resourceTable}>
       <tbody>

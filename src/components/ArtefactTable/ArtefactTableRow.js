@@ -5,6 +5,7 @@ import axios from 'axios';
 function ArtefactTableRow({item}) {
     
   const [localizedName, setLocalizedName] = React.useState("s");
+
   const getter = async (uniqueName) => {
     const response = await axios.post("/info/getItemLocalization", {
       uniqueName,
@@ -12,6 +13,7 @@ function ArtefactTableRow({item}) {
     let name = response.data.LocalizedNames["EN-US"];
     setLocalizedName((prev) => name.replace("Adept's",""));
   };
+
   let uniquename = "T4_"+item;
 
   useEffect(() => {

@@ -1,23 +1,24 @@
-import { useContext, memo } from "react";
+import { useContext, memo, useState,useMemo, useEffect } from "react";
 import { CraftItemContext } from "../../../context";
 import styles from "./ThirdTable.module.scss";
 import ThirdTableRow from "./ThirdTableRow";
+import axios from "axios";
 
 const calculateFame = (tier, ench, resAmount, factor) => {
   let base = 0;
-  if(tier = 4){
+  if(Number(tier) === 4){
     base =  (22.5);
   }
-  else if(tier = 5){
+  else if(Number(tier) === 5){
     base =  (90);
   }
-  else if(tier = 6){
+  else if(Number(tier) === 6){
     base =  (270);
   }
-  else if(tier = 7){
+  else if(Number(tier) === 7){
     base =  (645);
   }
-  else if(tier = 8){
+  else if(Number(tier) === 8){
     base =  (1395);
   }
   else {
@@ -31,35 +32,77 @@ const calculateFame = (tier, ench, resAmount, factor) => {
 const calculateJournalAmount = (tier, ench, resAmount, factor, itemAmount) => {
   let fame = calculateFame(tier, ench, resAmount, factor)
   let base = 0;
-  if(tier = 4){
+  if(Number(tier) === 4){
     base = 3600;
   }
-  else if(tier = 5){
+  else if(Number(tier) === 5){
     base = 7200;
   }
-  else if(tier = 6){
+  else if(Number(tier) === 6){
     base = 14400;
   }
-  else if(tier = 7){
+  else if(Number(tier) === 7){
     base = 28380;
   }
-  else if(tier = 8){
+  else if(Number(tier) === 8){
     base = 58590;
   }
 
-  return (fame*itemAmount)/base;
+  return ((fame*itemAmount)/base).toFixed(2);
 
-}
+};
 
+const calculateItemValue = (tier, ench, resAmount, artefactIV) => {
+  let base = 0;
+  if(Number(tier) === 4){
+    base = resAmount*(16*Math.pow(2,ench));
+  }
+  else if(Number(tier) === 5){
+    base = 7200;
+  }
+  else if(Number(tier) === 6){
+    base = 14400;
+  }
+  else if(Number(tier) === 7){
+    base = 28380;
+  }
+  else if(Number(tier) === 8){
+    base = 58590;
+  }
+  return base+artefactIV;
+};
 
 function ThirdTable() {
-  const { sellCost, tier, resourceAmount, destinyCraftFameFactor, amount } =
+  const { sellCost, tier, resourceAmount, destinyCraftFameFactor, amount, arrayCraftingMethods, option } =
     useContext(CraftItemContext);
-  // console.log('tier:',tier)
-  // console.log('resourceAmount:',resourceAmount)
-  // console.log('destinyCraftFameFactor:',destinyCraftFameFactor)
-  // console.log('amount:',amount)
-  // console.log('amount:',calculateJournalAmount(tier, 0, resourceAmount, destinyCraftFameFactor, amount))
+
+  const [itemValue, setItemValue] = useState(0)
+
+  const fetchData = async () => {
+    if(Array.isArray(arrayCraftingMethods[option].craftresource)){
+      for(let mat in arrayCraftingMethods[option].craftresource){
+        let uniquename = arrayCraftingMethods[option].craftresource[mat]["@uniquename"]
+        if(uniquename.includes("ARTEFACT") && !uniquename.includes("TOKEN")){
+          const response = await axios.post("/info/getSimpleItemIV", {uniquename});
+          setItemValue(prev => response.data);
+          // console.log("change")
+        }
+      }
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [option])
+
+  let arrayIV = [0,0,0,0,0];
+  let arrayJournals = [0,0,0,0,0];
+  for(let i=0;i<5;i++){
+    arrayIV[i] = calculateItemValue(tier, i, resourceAmount, itemValue)
+    arrayJournals[i] = calculateJournalAmount(tier, i, resourceAmount, destinyCraftFameFactor, amount)
+  }
+  // console.log(arrayIV)
+
   return (
     <div className={styles.thirdTable}>
       <table>
@@ -73,11 +116,11 @@ function ThirdTable() {
           </tr>
         </thead>
         <tbody>
-          <ThirdTableRow ench={0} sellPrice={sellCost[0]} journalAmount={calculateJournalAmount(tier, 0, resourceAmount, destinyCraftFameFactor, amount)}/>
-          <ThirdTableRow ench={1} sellPrice={sellCost[1]} journalAmount={calculateJournalAmount(tier, 1, resourceAmount, destinyCraftFameFactor, amount)}/>
-          <ThirdTableRow ench={2} sellPrice={sellCost[2]} journalAmount={calculateJournalAmount(tier, 2, resourceAmount, destinyCraftFameFactor, amount)}/>
-          <ThirdTableRow ench={3} sellPrice={sellCost[3]} journalAmount={calculateJournalAmount(tier, 3, resourceAmount, destinyCraftFameFactor, amount)}/>
-          <ThirdTableRow ench={4} sellPrice={sellCost[4]} journalAmount={calculateJournalAmount(tier, 4, resourceAmount, destinyCraftFameFactor, amount)}/>
+          <ThirdTableRow ench={0} sellPrice={sellCost[0]} journalAmount={arrayJournals[0]} IV={arrayIV[0]}/>
+          <ThirdTableRow ench={1} sellPrice={sellCost[1]} journalAmount={arrayJournals[1]} IV={arrayIV[1]}/>
+          <ThirdTableRow ench={2} sellPrice={sellCost[2]} journalAmount={arrayJournals[2]} IV={arrayIV[2]}/>
+          <ThirdTableRow ench={3} sellPrice={sellCost[3]} journalAmount={arrayJournals[3]} IV={arrayIV[3]}/>
+          <ThirdTableRow ench={4} sellPrice={sellCost[4]} journalAmount={arrayJournals[4]} IV={arrayIV[4]}/>
         </tbody>
       </table>
     </div>

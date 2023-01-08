@@ -1,0 +1,18 @@
+.wrapper {
+    width: 100vw;
+    background-image: url('../../../public/img/wallpaper/2790f96c07c891b0eac3b0c6b8845ebe979acb75.jpeg');
+    background-size: cover;
+    background-position-y: -250px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        color: white;
+        font-size: 70px;
+        font-weight: 600;
+        background-color: rgba(0, 0, 0, 0.661);
+        padding: 0 30px;
+    }
+}

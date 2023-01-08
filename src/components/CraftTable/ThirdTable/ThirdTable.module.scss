@@ -16,9 +16,14 @@
     td, th {
         text-align: center;
         background-color: white;
-        width: 100px;
 
-        &:nth-child(n+4){
+        &:nth-child(n):nth-last-child(n+3){
+            width: 100px;
+        }
+        &:nth-child(4){
+            width: 60px;
+        }
+        &:nth-child(5){
             width: 50px;
         }
     }

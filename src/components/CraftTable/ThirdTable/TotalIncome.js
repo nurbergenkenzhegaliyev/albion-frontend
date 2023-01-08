@@ -73,13 +73,13 @@ function TotalIncome({ totalIncome, setTotalIncome, ench, sellPrice, journalAmou
 
     
 
-    let total = Math.ceil((sumOfReturnedMaterials + selling)*(1-0.065))
+    let total = Math.ceil((sumOfReturnedMaterials + selling))
 
     let journalCost = resources["T" + tier + "_JOURNAL_" + maker.toUpperCase() + "_FILLED"] * journalAmount;
     total += journalCost;
 
     // Return total cost of craft
-    return total;
+    return (total*(1-0.065)).toFixed(0);
   };
   
   useEffect(() => {

@@ -5,12 +5,11 @@
 
     table {
         table-layout: fixed;
-        width: 230px;
-        margin-right: 10px;
+        width: 220px;
 
         tr th:first-child,
         tr td:first-child {
-            width: 50px;
+            width: 40px;
         }
     }
 

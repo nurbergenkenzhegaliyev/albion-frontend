@@ -6,7 +6,7 @@ import styles from "./ThirdTable.module.scss";
 // Journal Fame = Material Amount * Fame Multiplier * POW(2, Enchantment Tier)
 
 
-function ThirdTableRow({ ench, sellPrice, journalAmount }) {
+function ThirdTableRow({ ench, sellPrice, journalAmount, IV }) {
   const [totalExpense, setTotalExpense] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);
 
@@ -23,6 +23,7 @@ function ThirdTableRow({ ench, sellPrice, journalAmount }) {
         totalExpense={totalExpense}
         ench={ench}
         journalAmount={journalAmount}
+        IV={IV}
       />
       <TotalIncome
         setTotalIncome={setTotalIncome}
