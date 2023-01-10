@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -28,34 +28,37 @@ export default React.memo(function LoginContainer() {
     };
 
     const content = 
-        <section className={styles.login}>
-            <div className={styles.form_container}>
+        <div className={styles.main} >
+            <div className={styles.login}>
+                <div className={styles.form_container}>
 
-                <h1>Login</h1>
+                    <h1>Login</h1>
 
-                <form onSubmit={handleSubmit(submitForm)} className={styles.form}>
-                    <div className={styles.form_line}>
-                        <input
-                            type='text'
-                            {...register('username')}
-                            placeholder='username'
-                            required
-                        />
-                        <input
-                            type='password'
-                            {...register('password')}
-                            placeholder='password'
-                            required
-                        />
-                        <button type='submit'>Sign In</button>
-                    </div>
-                    <div className={styles.errorMessage}>
-                        {error && <p>{error}</p>}
-                    </div>
-                </form>
+                    <form onSubmit={handleSubmit(submitForm)} className={styles.form}>
+                        <div className={styles.form_line}>
+                            <input
+                                type='text'
+                                {...register('username')}
+                                placeholder='username'
+                                required
+                            />
+                            <input
+                                type='password'
+                                {...register('password')}
+                                placeholder='password'
+                                required
+                            />
+                            <button type='submit'>Sign In</button>
+                        </div>
+                        <div className={styles.errorMessage}>
+                            {error && <p>{error}</p>}
+                        </div>
+                    </form>
 
+                </div>
             </div>
-        </section>
+        </div>
+        
     
 
     return content;

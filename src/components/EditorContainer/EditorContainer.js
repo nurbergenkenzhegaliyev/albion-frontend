@@ -9,7 +9,7 @@ import { stateToHTML } from "draft-js-export-html";
 class EditorContainer extends Component {
     constructor(props) {
       super(props);
-      this.state = {editorState: EditorState.createEmpty()};
+      this.state = {editorState: (props.editorState ? props.editorState : EditorState.createEmpty())};
 
       this.focus = () => this.refs.editor.focus();
       this.onChange = (editorState) => this.setState({editorState});
@@ -76,33 +76,42 @@ class EditorContainer extends Component {
 
     //   const currentContent = editorState.getCurrentContent();
     //   const htmlContent = draftToHtml(convertToRaw(currentContent));
-      console.log(JSON.stringify(convertToRaw(editorState.getCurrentContent())))
+      console.log(this.props.readOnly)
 
       return (
+        !this.props.read ? (
+        <>
         <div className="RichEditor-root">
-          <BlockStyleControls
+            <BlockStyleControls
             editorState={editorState}
             onToggle={this.toggleBlockType}
-          />
-          <InlineStyleControls
+            />
+            <InlineStyleControls
             editorState={editorState}
             onToggle={this.toggleInlineStyle}
-          />
-          <div className={className} onClick={this.focus}>
-            <Editor
-              blockStyleFn={getBlockStyle}
-              customStyleMap={styleMap}
-              editorState={editorState}
-              handleKeyCommand={this.handleKeyCommand}
-              keyBindingFn={this.mapKeyToEditorCommand}
-              onChange={this.onChange}
-              placeholder="Tell a story..."
-              ref="editor"
-              spellCheck={true}
             />
-            <button onClick={() => this.props.setState(convertToRaw(editorState.getCurrentContent()))}> save </button>
-          </div>
+            <div className={className} onClick={this.focus}>
+            <Editor
+                blockStyleFn={getBlockStyle}
+                customStyleMap={styleMap}
+                editorState={editorState}
+                handleKeyCommand={this.handleKeyCommand}
+                keyBindingFn={this.mapKeyToEditorCommand}
+                onChange={this.onChange}
+                placeholder="Tell a story..."
+                ref="editor"
+                spellCheck={true}
+            />
+            </div>
         </div>
+        </>
+        ):(
+        <Editor
+            editorState={editorState}
+            readOnly={true}
+        />
+        )
+        
       );
     }
 }

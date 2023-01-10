@@ -6,7 +6,9 @@ function HomeContainer() {
 
     const container = (
         <div className={styles.container}>
-          <button> get</button>
+          <div className={styles.wrapper} >
+            <button> get</button>
+          </div>
         </div>
     )
 

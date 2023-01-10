@@ -24,36 +24,39 @@ function RegisterContainer() {
     }
     return (
         <>
-        <section className={styles.login}>
-            <div className={styles.form_container}>
-                <h1>Register</h1>
+        <div className={styles.main} >
+            <section className={styles.login}>
+                <div className={styles.form_container}>
+                    <h1>Register</h1>
 
-                <form onSubmit={handleSubmit(submitForm)}  className={styles.form}>
-                    <div className={styles.form_line}>
-                        <input 
-                            type='text'
-                            {...register('username')}
-                            placeholder='   username'
-                            required
-                        />
-                        <input 
-                            type='password'
-                            {...register('password')}
-                            placeholder='   password'
-                            required
-                        />
-                        <button type='submit' disabled={isLoading} >
-                            Sign Up
-                        </button>
-                    </div>
-                    
-                    <div className={styles.errorMessage}>
-                        {error && <p>{error}</p>}
-                    </div>
-                </form>
-            </div>
-            
-        </section>
+                    <form onSubmit={handleSubmit(submitForm)}  className={styles.form}>
+                        <div className={styles.form_line}>
+                            <input 
+                                type='text'
+                                {...register('username')}
+                                placeholder='   username'
+                                required
+                            />
+                            <input 
+                                type='password'
+                                {...register('password')}
+                                placeholder='   password'
+                                required
+                            />
+                            <button type='submit' disabled={isLoading} >
+                                Sign Up
+                            </button>
+                        </div>
+                        
+                        <div className={styles.errorMessage}>
+                            {error && <p>{error}</p>}
+                        </div>
+                    </form>
+                </div>
+                
+            </section>
+        </div>
+        
         </>
         
     )
