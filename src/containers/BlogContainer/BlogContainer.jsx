@@ -5,7 +5,7 @@ import BlogCard from "../../components/BlogCard/BlogCard";
 import BlogNavbar from "../../components/BlogNavbar/BlogNavbar";
 import BlogTitle from "../../components/BlogTitle/BlogTitle";
 import styles from "./BlogContainer.module.scss";
-import axios from "axios";
+import axios from "../../axios.js";
 
 
 
