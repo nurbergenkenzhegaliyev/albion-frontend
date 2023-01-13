@@ -9,7 +9,6 @@ import Register from "./pages/Register.jsx";
 import Protected from "./containers/Protected.js";
 import Blog from "./pages/Blog.jsx";
 import Footer from "./components/Footer/Footer.js";
-import BlogPost from "./components/BlogPost/BlogPost.js";
 import BlogPostPage from "./pages/BlogPostPage.jsx";
 
 
