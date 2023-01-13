@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import TableInput from '../TableInput/TableInput';
-import axios from 'axios';
+import axios from '../../axios.js';
 
 function ArtefactTableRow({item}) {
     

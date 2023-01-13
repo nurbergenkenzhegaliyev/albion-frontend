@@ -1,14 +1,14 @@
-import React, {useEffect} from "react";
+import {useEffect, memo, useState, useContext} from "react";
 import styles from "./CraftItemName.module.scss";
 import { CraftItemContext } from "../../../context.js";
-import axios from "axios";
+import axios from "../../../axios.js";
 
 
 
 
 function CraftItemName() {
     let { arrayCraftingMethods, uniquename, setOption, tier} =
-    React.useContext(CraftItemContext);
+    useContext(CraftItemContext);
 
     let optionAmount = arrayCraftingMethods.length;
     let optionArray = [];
@@ -16,13 +16,14 @@ function CraftItemName() {
         optionArray.push(i);
     }
 
-    const [localizedName, setLocalizedName] = React.useState('s')
+    const [localizedName, setLocalizedName] = useState('s')
     const getter = async(uniqueName) => {
         const response = await axios.post("/info/getItemLocalization", { uniqueName })
         setLocalizedName(prev => response.data.LocalizedNames['EN-US']);
         
     }
     useEffect(() => {
+        console.log("Localized")
         getter(uniquename);
     }, [uniquename])
     
@@ -42,4 +43,4 @@ function CraftItemName() {
     )
 }
 
-export default React.memo(CraftItemName)
+export default memo(CraftItemName)

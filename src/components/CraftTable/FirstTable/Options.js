@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { CraftItemContext } from "../../../context";
 import styles from "./FirstTable.module.scss";
-import axios from "axios";
+import axios from "../../../axios.js";
 
 function Options({ obj }) {
   let { amount, setAmount, tier } = React.useContext(CraftItemContext);

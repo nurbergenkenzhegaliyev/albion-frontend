@@ -2,7 +2,7 @@ import { useContext, memo, useState, useEffect } from "react";
 import { CraftItemContext } from "../../../context";
 import styles from "./ThirdTable.module.scss";
 import ThirdTableRow from "./ThirdTableRow";
-import axios from "axios";
+import axios from "../../../axios.js";
 
 const calculateFame = (tier, ench, resAmount, factor) => {
   let base = 0;
