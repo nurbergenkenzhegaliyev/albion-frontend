@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import EditorContainer from "../../components/EditorContainer/EditorContainer";
 import { EditorState, convertFromRaw } from "draft-js";
 import { useState, useEffect, memo } from "react";
-import axios from "axios";
+import axios from "../../axios.js";
 
 const temp = {
   title: "empty",
