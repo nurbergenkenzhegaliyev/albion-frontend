@@ -84,7 +84,7 @@ function TotalIncome({ totalIncome, setTotalIncome, ench, sellPrice, journalAmou
   
   useEffect(() => {
     setTotalIncome(calculation(ench))
-  }, [resources, amount, sellPrice, option, returnRate])
+  }, [resources, amount, sellPrice, option, returnRate, calculation, ench])
   
  
   return <td>{totalIncome}</td>;

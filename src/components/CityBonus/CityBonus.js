@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import { useState } from "react";
 import styles from "./CityBonus.module.scss";
 
@@ -45,6 +45,7 @@ function CityBonus({focus, setFocus, premium, setPremium,returnRate,setReturnRat
             <option value="Carleon">Carleon</option>
           </select>
         </div>
+        {city}
         
         <div className={styles.sameBlock}>
           <input onChange={e=>setReturnRate(e.target.value)} value={returnRate} className={styles.returnRate} />
@@ -55,4 +56,4 @@ function CityBonus({focus, setFocus, premium, setPremium,returnRate,setReturnRat
   );
 }
 
-export default React.memo(CityBonus)
+export default memo(CityBonus)

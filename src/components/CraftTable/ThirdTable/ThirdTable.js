@@ -1,4 +1,4 @@
-import { useContext, memo, useState,useMemo, useEffect } from "react";
+import { useContext, memo, useState, useEffect } from "react";
 import { CraftItemContext } from "../../../context";
 import styles from "./ThirdTable.module.scss";
 import ThirdTableRow from "./ThirdTableRow";
@@ -93,7 +93,7 @@ function ThirdTable() {
 
   useEffect(() => {
     fetchData();
-  }, [option])
+  }, [option, fetchData])
 
   let arrayIV = [0,0,0,0,0];
   let arrayJournals = [0,0,0,0,0];

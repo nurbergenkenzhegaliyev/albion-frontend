@@ -72,7 +72,7 @@ function TotalExpense({ totalExpense, setTotalExpense, ench, journalAmount, IV }
   
   useEffect(() => {
     setTotalExpense(calculation(ench))
-  }, [resources, amount, option, tax])
+  }, [resources, amount, option, tax, calculation, ench])
   
  
   return <td>{totalExpense}</td>;

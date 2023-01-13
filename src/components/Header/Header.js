@@ -30,7 +30,7 @@ export default React.memo(function Header() {
             handleLogout();
           }
         }
-    },[location]);
+    },[location, handleLogout]);
 
     // Get userInfo from state to check if user logged in
     // Otherwise some option will not be allowed

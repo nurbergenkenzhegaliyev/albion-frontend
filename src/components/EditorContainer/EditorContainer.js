@@ -1,9 +1,7 @@
 import { Component } from "react";
 import { Editor, EditorState, getDefaultKeyBinding, RichUtils, convertToRaw } from 'draft-js';
 import './EditorContainer.scss';
-import '../../../node_modules/draft-js/dist/Draft.css'
-import draftToHtml from 'draftjs-to-html';
-import { stateToHTML } from "draft-js-export-html";
+import '../../../node_modules/draft-js/dist/Draft.css';
 
 
 class EditorContainer extends Component {
@@ -18,6 +16,9 @@ class EditorContainer extends Component {
       this.toggleBlockType = this._toggleBlockType.bind(this);
       this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
     }
+
+
+
 
     _handleKeyCommand(command, editorState) {
       const newState = RichUtils.handleKeyCommand(editorState, command);
@@ -43,6 +44,7 @@ class EditorContainer extends Component {
       return getDefaultKeyBinding(e);
     }
 
+    
     _toggleBlockType(blockType) {
       this.onChange(
         RichUtils.toggleBlockType(
@@ -73,10 +75,11 @@ class EditorContainer extends Component {
           className += ' RichEditor-hidePlaceholder';
         }
       }
-
-    //   const currentContent = editorState.getCurrentContent();
-    //   const htmlContent = draftToHtml(convertToRaw(currentContent));
-      console.log(this.props.readOnly)
+        // console.log(this.state.convertedContent)
+        const handleJSON = () => {
+          const content = convertToRaw(this.state.editorState.getCurrentContent())
+          console.log(JSON.stringify(content));
+        }
 
       return (
         !this.props.read ? (
@@ -103,6 +106,7 @@ class EditorContainer extends Component {
                 spellCheck={true}
             />
             </div>
+            <button onClick={() => handleJSON()}>print</button>
         </div>
         </>
         ):(

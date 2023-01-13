@@ -13,7 +13,7 @@ function Accordion({children, title, length, tax, setTax}) {
               <span className={styles.fee}>Fee:</span>
               <input type="text" value={tax} onChange={e=>setTax(e.target.value)} onClick={e => e.stopPropagation()} />
             </div>
-            <span className={styles.length}>{(length!=0 && length!=undefined) && `Item amount: ${length}`}</span>
+            <span className={styles.length}>{(length!==0 && length!==undefined) && `Item amount: ${length}`}</span>
 
         </div>
         <div className={styles.accordionContent} aria-expanded={isOpen}>

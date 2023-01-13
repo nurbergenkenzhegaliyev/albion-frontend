@@ -9,6 +9,8 @@ import Register from "./pages/Register.jsx";
 import Protected from "./containers/Protected.js";
 import Blog from "./pages/Blog.jsx";
 import Footer from "./components/Footer/Footer.js";
+import BlogPost from "./components/BlogPost/BlogPost.js";
+import BlogPostPage from "./pages/BlogPostPage.jsx";
 
 
 function App() {
@@ -20,7 +22,10 @@ function App() {
           <div className="content" >
             <Routes>
               <Route path="/" exact element={<Home />} />
-              <Route path="/blog" exact element={<Blog />} />
+              <Route path="blog" exact element={<Blog />}/>
+              <Route path="blog:id" element={<BlogPostPage />} />
+              {/* </Route> */}
+
               <Route path="/craft" exact element={
                 <Protected>
                   <Craft />

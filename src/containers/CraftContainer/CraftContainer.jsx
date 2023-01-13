@@ -18,7 +18,7 @@ function CraftContainer() {
   const [hunterTax, setHunterTax] = useState(500);
   const [mageTax, setMageTax] = useState(500);
   const [warriorTax, setWarriorTax] = useState(500);
-  const [toolmakerTax, setToolmakerTax] = useState(500);
+  // const [toolmakerTax, setToolmakerTax] = useState(500);
 
   return (
     <div className={styles.craft}>

@@ -1,4 +1,4 @@
-import React from "react";
+import { memo, useContext } from "react";
 import styles from "./SecondTable.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { CraftItemContext } from "../../../context.js";
@@ -10,7 +10,7 @@ function SecondTable() {
   const dispatch = useDispatch();
 
   const { uniquename, arrayCraftingMethods, tier, option, returnRate, sellCost, setSellCost } =
-    React.useContext(CraftItemContext);
+    useContext(CraftItemContext);
     
 
   const handleSetSellCost = (ench, cost) => {
@@ -29,7 +29,7 @@ function SecondTable() {
         priceList: sellCost,
       })
     );
-  },[sellCost])
+  },[sellCost, dispatch, uniquename])
 
   const looping = (materials, enchantment) => {
     let sum = 0;
@@ -126,4 +126,4 @@ function SecondTable() {
   );
 }
 
-export default React.memo(SecondTable);
+export default memo(SecondTable);

@@ -1,22 +1,21 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { useState } from "react";
 import { connect } from "react-redux";
 import EditorContainer from "../../components/EditorContainer/EditorContainer";
 
 import storedState from "./storedState.json";
-import { Editor, EditorState, convertFromRaw } from "draft-js";
+import { EditorState, convertFromRaw } from "draft-js";
 import styles from './BlogPost.module.scss';
+
 export const BlogPost = (props) => {
-  const [test, setTest] = useState(storedState);
   const [read, setRead] = useState(false);
 
-  const contentState = convertFromRaw(test);
+  const contentState = convertFromRaw(storedState);
   const editorState = EditorState.createWithContent(contentState);
   return (
     <div className={styles.wrapper} >
         <div className={styles.postBox} >
             <EditorContainer
-                setState={setTest}
                 editorState={editorState}
                 read={read}
             />
