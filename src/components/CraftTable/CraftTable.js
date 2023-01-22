@@ -1,13 +1,16 @@
 
-import styles from "./CraftTable.module.scss";
 import { useState, memo } from "react";
+import PropTypes from "prop-types";
+import { CraftItemContext } from "../../context.js";
+import { useDispatch, useSelector } from "react-redux";
+import { removeCraftingItem } from "../../features/info/infoActions";
+
+import styles from "./CraftTable.module.scss";
+
 import FirstTable from "./FirstTable/FirstTable";
 import SecondTable from "./SecondTable/SecondTable";
 import ThirdTable from "./ThirdTable/ThirdTable";
-import { CraftItemContext } from "../../context.js";
 import RemoveButton from "../RemoveButton/RemoveButton.js";
-import { useDispatch, useSelector } from "react-redux";
-import { removeCraftingItem } from "../../features/info/infoActions";
 
   
 function CraftTable({ item, returnRate, tax }) {
@@ -19,7 +22,7 @@ function CraftTable({ item, returnRate, tax }) {
   // Tier of crafting item -> colour difference
   const tier = uniquename[1];
 
-  // Several way to craft the item
+  // Several way to craft the <item></item>
   const craftingMethods = item.craftingrequirements;
 
   let arrayCraftingMethods = [];
@@ -116,5 +119,11 @@ function CraftTable({ item, returnRate, tax }) {
     </CraftItemContext.Provider>
   );
 }
+
+CraftTable.propTypes = {
+  item: PropTypes.object,
+  returnRate: PropTypes.number,
+  tax: PropTypes.number,
+};
 
 export default memo(CraftTable);

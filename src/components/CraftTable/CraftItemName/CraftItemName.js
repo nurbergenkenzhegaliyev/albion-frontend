@@ -23,7 +23,6 @@ function CraftItemName() {
         
     }
     useEffect(() => {
-        console.log("Localized")
         getter(uniquename);
     }, [uniquename])
     

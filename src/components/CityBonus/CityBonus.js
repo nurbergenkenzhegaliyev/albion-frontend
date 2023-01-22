@@ -1,4 +1,5 @@
 import { memo } from "react";
+import PropTypes from "prop-types";
 import { useState } from "react";
 import styles from "./CityBonus.module.scss";
 
@@ -55,5 +56,14 @@ function CityBonus({focus, setFocus, premium, setPremium,returnRate,setReturnRat
     </div>
   );
 }
+
+CityBonus.propTypes = {
+  focus: PropTypes.bool,
+  setFocus: PropTypes.func,
+  premium: PropTypes.bool,
+  setPremium: PropTypes.func,
+  returnRate: PropTypes.number,
+  setReturnRate: PropTypes.func,
+};
 
 export default memo(CityBonus)

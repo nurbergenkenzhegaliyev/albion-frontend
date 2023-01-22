@@ -1,16 +1,16 @@
 import { memo } from "react";
+import PropTypes from "prop-types";
 import styles from "./ArtefactTable.module.scss";
-import { useSelector } from "react-redux";
+import { connect } from "react-redux";
 import ArtefactTableRow from "./ArtefactTableRow";
 
-function ArtefactTable() {
-  const {craftingItems} = useSelector((state) => state.info);
+function ArtefactTable({craftingItems}) {
 
   let arrayOfUniquenames = [];
 
   for (const makerName in craftingItems) {
     let maker = craftingItems[makerName];
-    for(let item in maker){
+    for (let item in maker) {
       let requirement = maker[item].craftingrequirements;
 
       if (Array.isArray(requirement)) {
@@ -20,7 +20,9 @@ function ArtefactTable() {
           if (Array.isArray(resources)) {
             for (let material in resources) {
               if (resources[material]["@uniquename"].includes("ARTEFACT")) {
-                arrayOfUniquenames.push(resources[material]["@uniquename"].slice(3));
+                arrayOfUniquenames.push(
+                  resources[material]["@uniquename"].slice(3)
+                );
               }
             }
           }
@@ -30,7 +32,7 @@ function ArtefactTable() {
   }
 
   const unique = [...new Set(arrayOfUniquenames)];
-  
+
   return (
     <table className={styles.resourceTable}>
       <tbody>
@@ -42,14 +44,22 @@ function ArtefactTable() {
           <th>Tier 7</th>
           <th>Tier 8</th>
         </tr>
-        {
-            unique.map(item => (
-              <ArtefactTableRow key={item} item={item} />
-            ))
-        }
+        {unique.map((item) => (
+          <ArtefactTableRow key={item} item={item} />
+        ))}
       </tbody>
     </table>
   );
 }
 
-export default memo(ArtefactTable);
+ArtefactTable.propTypes = {
+  craftingItems: PropTypes.object
+};
+
+const mapStateToProps = (state) => {
+  return {
+    craftingItems: state.info.craftingItems,
+  }
+}
+
+export default connect(mapStateToProps)(memo(ArtefactTable));

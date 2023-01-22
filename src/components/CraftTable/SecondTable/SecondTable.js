@@ -1,12 +1,12 @@
 import { memo, useContext } from "react";
+import PropTypes from "prop-types";
 import styles from "./SecondTable.module.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, connect } from "react-redux";
 import { CraftItemContext } from "../../../context.js";
 import { useEffect } from "react";
 import { addCraftingItemSellPrice } from "../../../features/info/infoActions.js";
 
-function SecondTable() {
-  const { resources } = useSelector((state) => state.info);
+function SecondTable({resources}) {
   const dispatch = useDispatch();
 
   const { uniquename, arrayCraftingMethods, tier, option, returnRate, sellCost, setSellCost } =
@@ -126,4 +126,14 @@ function SecondTable() {
   );
 }
 
-export default memo(SecondTable);
+SecondTable.propTypes = {
+  resources: PropTypes.object
+};
+
+const mapStateToProps = (state) => {
+  return {
+    resources: state.info.resources,
+  }
+}
+
+export default connect(mapStateToProps)(memo(SecondTable));

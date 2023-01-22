@@ -1,4 +1,5 @@
 import { useState, memo } from "react";
+import PropTypes from "prop-types";
 import TotalExpense from "./TotalExpense";
 import TotalIncome from "./TotalIncome";
 import styles from "./ThirdTable.module.scss";
@@ -38,5 +39,12 @@ function ThirdTableRow({ ench, sellPrice, journalAmount, IV }) {
     </tr>
   );
 }
+
+ThirdTableRow.propTypes = {
+  ench: PropTypes.number,
+  sellPrice: PropTypes.number,
+  journalAmount: PropTypes.number,
+  IV: PropTypes.number,
+};
 
 export default memo(ThirdTableRow);

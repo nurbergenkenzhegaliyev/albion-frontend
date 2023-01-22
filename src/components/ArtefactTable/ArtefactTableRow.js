@@ -1,10 +1,11 @@
 import React,{useEffect} from 'react';
 import TableInput from '../TableInput/TableInput';
 import axios from '../../axios.js';
+import PropTypes from "prop-types";
 
 function ArtefactTableRow({item}) {
     
-  const [localizedName, setLocalizedName] = React.useState("s");
+  const [localizedName, setLocalizedName] = React.useState("Empty");
 
   const getter = async (uniqueName) => {
     const response = await axios.post("/info/getItemLocalization", {
@@ -34,5 +35,10 @@ function ArtefactTableRow({item}) {
     </tr>
   )
 }
+
+ArtefactTableRow.propTypes = {
+  item: PropTypes.string
+};
+
 
 export default React.memo(ArtefactTableRow)

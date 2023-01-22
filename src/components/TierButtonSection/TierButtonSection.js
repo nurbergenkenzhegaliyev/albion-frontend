@@ -14,7 +14,7 @@ function TierButtonSection() {
             <Button bid="8" />
           </div>
 
-          <Button bid="create" onClk={() => console.log("create card")} />
+          <Button bid="create" />
         </div>
     </>
   )

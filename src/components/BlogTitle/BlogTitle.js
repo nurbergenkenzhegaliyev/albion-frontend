@@ -1,4 +1,5 @@
-import styles from './BlogTitle.module.scss'
+import styles from './BlogTitle.module.scss';
+import { memo } from 'react';
 
 function BlogTitle() {
   return (
@@ -8,4 +9,4 @@ function BlogTitle() {
   )
 }
 
-export default BlogTitle
+export default memo(BlogTitle)

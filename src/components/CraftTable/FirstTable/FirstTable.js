@@ -7,10 +7,10 @@ import Options from "./Options";
 function FirstTable() {
   let {arrayCraftingMethods, option} = React.useContext(CraftItemContext);
 
-  const mtable = arrayCraftingMethods.map((obj, index) => (
+  const mtable = arrayCraftingMethods.map((craftingMethod, index) => (
       <table id={index} key={index} >
         <tbody className={index.toString() === option ? "" : styles.hide}>
-          <Options obj={obj}/>
+          <Options craftingMethod={craftingMethod}/>
         </tbody>
       </table>
   ));

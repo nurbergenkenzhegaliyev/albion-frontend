@@ -1,4 +1,5 @@
 import {useEffect, memo, useContext} from "react";
+import PropTypes from "prop-types";
 import { CraftItemContext } from "../../../context";
 import { useSelector } from "react-redux";
 
@@ -79,7 +80,7 @@ function TotalIncome({ totalIncome, setTotalIncome, ench, sellPrice, journalAmou
     total += journalCost;
 
     // Return total cost of craft
-    return (total*(1-0.065)).toFixed(0);
+    return Number((total*(1-0.065)).toFixed(0));
   };
   
   useEffect(() => {
@@ -89,5 +90,13 @@ function TotalIncome({ totalIncome, setTotalIncome, ench, sellPrice, journalAmou
  
   return <td>{totalIncome}</td>;
 }
+
+TotalIncome.propTypes = {
+  totalIncome: PropTypes.number,
+  setTotalIncome: PropTypes.func,
+  ench: PropTypes.number,
+  sellPrice: PropTypes.number,
+  journalAmount: PropTypes.number,
+};
 
 export default memo(TotalIncome);

@@ -48,7 +48,7 @@ const calculateJournalAmount = (tier, ench, resAmount, factor, itemAmount) => {
     base = 58590;
   }
 
-  return ((fame*itemAmount)/base).toFixed(2);
+  return Number(((fame*itemAmount)/base).toFixed(2));
 
 };
 

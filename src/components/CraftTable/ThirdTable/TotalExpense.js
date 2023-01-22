@@ -1,4 +1,5 @@
 import { useEffect, useContext, memo } from "react";
+import PropTypes from "prop-types";
 import { CraftItemContext } from "../../../context";
 import { useSelector } from "react-redux";
 
@@ -77,4 +78,13 @@ function TotalExpense({ totalExpense, setTotalExpense, ench, journalAmount, IV }
  
   return <td>{totalExpense}</td>;
 }
+
+TotalExpense.propTypes = {
+  totalExpense: PropTypes.number,
+  setTotalExpense: PropTypes.func,
+  ench: PropTypes.number,
+  journalAmount: PropTypes.number,
+  IV: PropTypes.number,
+};
+
 export default memo(TotalExpense);

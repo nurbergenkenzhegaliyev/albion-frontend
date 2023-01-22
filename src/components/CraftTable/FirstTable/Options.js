@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import { CraftItemContext } from "../../../context";
 import styles from "./FirstTable.module.scss";
 import axios from "../../../axios.js";
 
-function Options({ obj }) {
+function Options({ craftingMethod }) {
   let { amount, setAmount, tier } = React.useContext(CraftItemContext);
 
   let uniquename = null;
 
-  if(Array.isArray(obj.craftresource)){
-    for (let item in obj.craftresource) {
-      if (obj.craftresource[item]["@uniquename"].includes("ARTEFACT")) {
-        uniquename = obj.craftresource[item]["@uniquename"];
+  if(Array.isArray(craftingMethod.craftresource)){
+    for (let item in craftingMethod.craftresource) {
+      if (craftingMethod.craftresource[item]["@uniquename"].includes("ARTEFACT")) {
+        uniquename = craftingMethod.craftresource[item]["@uniquename"];
       }
     }
   }
@@ -95,11 +96,16 @@ function Options({ obj }) {
 
   return (
     <>
-      {genrateFirstRow("Amount", obj, "@uniquename")}
-      {genrateRow("1", obj, "@count")}
-      {generateCountRow(obj, "@count", amount)}
+      {genrateFirstRow("Amount", craftingMethod, "@uniquename")}
+      {genrateRow("1", craftingMethod, "@count")}
+      {generateCountRow(craftingMethod, "@count", amount)}
     </>
   );
 }
+
+Options.propTypes = {
+  craftingMethod: PropTypes.object
+};
+
 
 export default React.memo(Options);

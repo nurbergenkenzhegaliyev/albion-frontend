@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 import { CraftContext } from "../../context.js";
 import { useDispatch } from "react-redux";
 import { addCraftingItem } from "../../features/info/infoActions";
 import axios from "../../axios.js";
 
-function Button({ bid, onClk }) {
+function Button({bid}) {
   const dispatch = useDispatch();
   const { clickedTier, setClickedTier, itemName, makerType } =
     React.useContext(CraftContext);
@@ -46,7 +47,6 @@ function Button({ bid, onClk }) {
     return (
       <button
         className={`${styles.updateButton} ${styles.update}`}
-        onClick={onClk}
       >
         Update resource prices
       </button>
@@ -57,7 +57,6 @@ function Button({ bid, onClk }) {
     return (
       <button
         className={`${styles.updateButton} ${styles.update}`}
-        onClick={onClk}
       >
         Update resource prices
       </button>
@@ -77,5 +76,9 @@ function Button({ bid, onClk }) {
     );
   }
 }
+
+Button.propTypes = {
+  bid: PropTypes.string
+};
 
 export default React.memo(Button);

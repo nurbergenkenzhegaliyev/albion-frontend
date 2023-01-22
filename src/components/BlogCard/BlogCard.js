@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-// import { memo } from 'react';
+import { memo } from 'react';
 import { connect } from 'react-redux';
 import styles from './BlogCard.module.scss';
 import { Link } from 'react-router-dom';
@@ -32,4 +32,4 @@ const mapStateToProps = (state) => ({})
 
 const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(BlogCard)
+export default connect(mapStateToProps, mapDispatchToProps)(memo(BlogCard))
