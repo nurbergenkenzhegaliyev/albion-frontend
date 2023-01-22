@@ -6,7 +6,6 @@ import styles from "./CraftContainer.module.scss";
 import Accordion from "../../components/Accordion/Accordion.js";
 import { useState, memo } from "react";
 
-
 function CraftContainer() {
   const { craftingItems } = useSelector((state) => state.info);
 
@@ -21,49 +20,66 @@ function CraftContainer() {
   // const [toolmakerTax, setToolmakerTax] = useState(500);
 
   return (
-    <div className={styles.craft}>
-      <ItemChooseSection />
-      <CityBonus
-        focus={focus}
-        setFocus={setFocus}
-        premium={premium}
-        setPremium={setPremium}
-        returnRate={returnRate}
-        setReturnRate={setReturnRate}
-      />
+    <div className={styles.main}>
+      <div className={styles.wrapper}>
+        <ItemChooseSection />
+        <CityBonus
+          focus={focus}
+          setFocus={setFocus}
+          premium={premium}
+          setPremium={setPremium}
+          returnRate={returnRate}
+          setReturnRate={setReturnRate}
+        />
 
-      <Accordion title={"Hunter"} length={craftingItems["hunter"].length} tax={hunterTax} setTax={setHunterTax}>
-        {craftingItems["hunter"].map((obj, index) => (
-          <CraftTable
-            key={obj["@uniquename"]}
-            item={obj}
-            returnRate={returnRate}
-            tax={hunterTax}
-          />
-        ))}
-      </Accordion>
+        <Accordion
+          title={"Hunter"}
+          length={craftingItems["hunter"].length}
+          tax={hunterTax}
+          setTax={setHunterTax}
+        >
+          {craftingItems["hunter"].map((obj, index) => (
+            <CraftTable
+              key={obj["@uniquename"]}
+              item={obj}
+              returnRate={returnRate}
+              tax={hunterTax}
+            />
+          ))}
+        </Accordion>
 
-      <Accordion title={"Mage"} length={craftingItems["mage"].length} tax={mageTax} setTax={setMageTax}>
-        {craftingItems["mage"].map((obj, index) => (
-          <CraftTable
-            key={obj["@uniquename"]}
-            item={obj}
-            returnRate={returnRate}
-            tax={mageTax}
-          />
-        ))}
-      </Accordion>
+        <Accordion
+          title={"Mage"}
+          length={craftingItems["mage"].length}
+          tax={mageTax}
+          setTax={setMageTax}
+        >
+          {craftingItems["mage"].map((obj, index) => (
+            <CraftTable
+              key={obj["@uniquename"]}
+              item={obj}
+              returnRate={returnRate}
+              tax={mageTax}
+            />
+          ))}
+        </Accordion>
 
-      <Accordion title={"Warrior"} length={craftingItems["warrior"].length} tax={warriorTax} setTax={setWarriorTax}>
-        {craftingItems["warrior"].map((obj, index) => (
-          <CraftTable
-            key={obj["@uniquename"]}
-            item={obj}
-            returnRate={returnRate}
-            tax={warriorTax}
-          />
-        ))}
-      </Accordion>
+        <Accordion
+          title={"Warrior"}
+          length={craftingItems["warrior"].length}
+          tax={warriorTax}
+          setTax={setWarriorTax}
+        >
+          {craftingItems["warrior"].map((obj, index) => (
+            <CraftTable
+              key={obj["@uniquename"]}
+              item={obj}
+              returnRate={returnRate}
+              tax={warriorTax}
+            />
+          ))}
+        </Accordion>
+      </div>
     </div>
   );
 }

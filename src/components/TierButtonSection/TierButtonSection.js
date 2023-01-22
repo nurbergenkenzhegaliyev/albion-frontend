@@ -1,20 +1,21 @@
-import React from 'react'
-import styles from './TierButtonSection.module.scss'
-import Button from "../../components/Button/Button.js";
+import React from 'react';
+import styles from './TierButtonSection.module.scss';
+import CreateItemButton from '../CrateItemButton/CreateItemButton';
+import TierButton from '../TierButton/TierButton';
 
 function TierButtonSection() {
   return (
     <>
         <div className={styles.tierButtons}>
           <div className="d-flex">
-            <Button bid="4" />
-            <Button bid="5" />
-            <Button bid="6" />
-            <Button bid="7" />
-            <Button bid="8" />
+            <TierButton tier="4" />
+            <TierButton tier="5" />
+            <TierButton tier="6" />
+            <TierButton tier="7" />
+            <TierButton tier="8" />
           </div>
 
-          <Button bid="create" />
+          <CreateItemButton />
         </div>
     </>
   )

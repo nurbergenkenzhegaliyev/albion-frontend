@@ -5,7 +5,7 @@ import styles from "./Accordion.module.scss";
 function Accordion({ children, title, length, tax, setTax }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className={`${styles.accordion} ${styles.wrapper}`}>
+    <div className={styles.accordion}>
       <div
         className={styles.accordionTitle}
         onClick={() => setIsOpen((prev) => !prev)}

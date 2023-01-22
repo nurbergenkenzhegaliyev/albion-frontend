@@ -1,9 +1,8 @@
-.wrapper {
-    max-width: 1440px;
-    margin: 0 auto;
-}
+
 
 .accordion {
+    width: 1440px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     .accordionTitle {
@@ -18,7 +17,6 @@
         margin-bottom: 20px;
         justify-content: space-between;
         transition: all 0.2s ease-in;
-        // outline: 1px rgb(205, 205, 205) solid;
         
         &:hover {
             transform: scale(1.03);

@@ -1,9 +1,12 @@
-.wrapper {
-    // background-color: bisque;
-    width: 900px;
-    margin: 0 auto;
-
-    .cardContainer {
-        margin-top: 100px;
+.main {
+    width: 100%;
+    min-height: 100vh;
+    .wrapper {
+        width: 900px;
+        margin: 0 auto;
+    
+        .cardContainer {
+            margin-top: 100px;
+        }
     }
 }

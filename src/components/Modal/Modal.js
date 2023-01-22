@@ -6,6 +6,7 @@ import AccordionResources from '../AccordionResources/AccordionResources';
 import JournalTable from '../JournalTable/JournalTable';
 
 const Modal = ({active, setActive}) => {
+    console.log(active)
 
     return (
         <div className={active ? [`${styles.modal} ${styles.active}`]:styles.modal} onClick={() => setActive(false)}>

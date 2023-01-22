@@ -1,4 +1,10 @@
-.craft {
-    background-color: #EEEEF0;
-    overflow: hidden;  /* Hide the element content, while height = 0 */
+.main {
+    min-height: 100vh;
+    width: 100%;
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }

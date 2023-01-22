@@ -1,21 +1,14 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
-.updateButton {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  cursor: pointer;
-  background-color: $updateButton_color;
+.button {
   border: none;
+  // outline: 1px solid #000000;
+  border-radius: 0;
 }
 
 .tierButton {
-  margin-right: 10px;
-  width: 76px;
-  height: 24px;
-  font-size: 16px;
-  box-shadow: 0px 4px gray;
+  width: 80px;
+  margin: 0 5px;
 }
 
 .tier4 {
@@ -58,9 +51,10 @@
     background-color: darken($tier8_color, $clickedDarken_percent);
   }
 }
+
 .create {
   margin: 0 auto;
-  width: 300px;
+  width: 100%;
   font-size: 16px;
   background-color: $createButton_color;
   &:hover {
@@ -70,6 +64,7 @@
 .update {
   width: 250px;
   height: 60px;
+  font-size: 18px;
   background-color: $updateButton_color;
   &:hover {
     background-color: darken($updateButton_color, $clickedDarken_percent);

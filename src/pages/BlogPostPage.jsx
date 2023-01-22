@@ -1,8 +1,14 @@
 import BlogPostContainer from "../containers/BlogPostContainer/BlogPostContainer";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 
 function BlogPostPage() {
   return (
-    <BlogPostContainer />
+    <>
+      <Header />
+      <BlogPostContainer />
+      <Footer />
+    </>
   )
 }
 

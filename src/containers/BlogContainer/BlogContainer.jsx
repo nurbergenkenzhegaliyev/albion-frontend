@@ -7,34 +7,32 @@ import BlogTitle from "../../components/BlogTitle/BlogTitle";
 import styles from "./BlogContainer.module.scss";
 import axios from "../../axios.js";
 
-
-
 export const BlogContainer = (props) => {
   const [section, setSection] = useState("Crafting");
-  const [blogs, setBlogs] = useState([])
-
-  
+  const [blogs, setBlogs] = useState([]);
 
   const getBlogs = async () => {
     const response = await axios.get("/blog/getAll");
-    setBlogs(response.data)
-  }
+    setBlogs(response.data);
+  };
   useEffect(() => {
-    getBlogs()
-  }, [])
-  
-  console.log(blogs)
+    getBlogs();
+  }, []);
+
+  console.log(blogs);
 
   return (
     <>
-      <BlogTitle />
+      <div className={styles.main}>
+        <BlogTitle />
 
-      <div className={styles.wrapper}>
-        <BlogNavbar setSection={setSection} />
-        {/* <BlogPost /> */}
-        {section}
-        <div className={styles.cardContainer} >
-          {blogs.map(blog => <BlogCard key={blog.title} blog={blog}/>)}
+        <div className={styles.wrapper}>
+          <BlogNavbar setSection={setSection} />
+          <div className={styles.cardContainer}>
+            {blogs.map((blog) => (
+              <BlogCard key={blog.title} blog={blog} />
+            ))}
+          </div>
         </div>
       </div>
     </>
